@@ -1,5 +1,6 @@
 class PlaysController < ApplicationController
   before_action :set_play, only: [:show, :edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:edit, :update, :destroy, :create] #onlt allow users to edit the DB, anyone can view
 
   # GET /plays
   # GET /plays.json
