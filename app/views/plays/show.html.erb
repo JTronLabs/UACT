@@ -15,5 +15,7 @@
   <%= @play.date_of_play %>
 </p>
 
+          <% if can? :update, @plays %>
 <%= link_to 'Edit', edit_play_path(@play) %> |
+<% end %>
 <%= link_to 'Back', plays_path %>

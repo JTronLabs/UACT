@@ -24,8 +24,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 
-#authentication
-gem 'devise'
+    #authentication
+    gem 'devise'
+    #authorization
+    gem 'cancancan', '~>1.10'
 
 
 

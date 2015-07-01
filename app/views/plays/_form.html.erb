@@ -1,6 +1,3 @@
-
-<% if user_signed_in? %>
-
     <%= form_for(@play) do |f| %>
       <% if @play.errors.any? %>
         <div id="error_explanation">
@@ -30,7 +27,3 @@
         <%= f.submit %>
       </div>
     <% end %>
-
-<% else %>
-    <p>Must sign in</p>
-<% end %>

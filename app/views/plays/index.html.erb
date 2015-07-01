@@ -19,12 +19,11 @@
         <td><%= play.description %></td>
         <td><%= play.date_of_play %></td>
         <td><%= link_to 'Show', play %></td>
-          <% if user_signed_in? %>
+          <% if can? :update, @plays %>
             <td><%= link_to 'Edit', edit_play_path(play) %></td>
+          <% end %>
+          <% if can? :delete, @plays %>
             <td><%= link_to 'Destroy', play, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-
-          <% else %>
-            <!-- if not signed in, user cannot create/edit/delete anything-->
           <% end %>
       </tr>
     <% end %>
@@ -33,8 +32,6 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if can? :create, @plays %>
     <%= link_to 'New Play', new_play_path %>
-<% else %>
-    <!-- if not signed in, user cannot create/edit/delete anything-->
 <% end %>

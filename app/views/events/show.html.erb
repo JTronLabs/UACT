@@ -15,5 +15,7 @@
   <%= @event.date_and_time_of_event %>
 </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
+<% if can? :update, @events %>
+    <%= link_to 'Edit', edit_event_path(@event) %> |
+<% end %>
 <%= link_to 'Back', events_path %>
