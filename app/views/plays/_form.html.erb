@@ -23,7 +23,14 @@
         <%= f.label :date_of_play %><br>
           <%= f.datetime_select :date_of_play %>
       </div>
+
+      <p>
+        <%= f.file_field :image %>
+      </p>
+
+<!-- f.label :remote_image_url, "or image URL" #not working-->
       <div class="actions">
         <%= f.submit %>
       </div>
+
     <% end %>

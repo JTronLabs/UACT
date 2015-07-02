@@ -15,7 +15,16 @@
   <%= @play.date_of_play %>
 </p>
 
-          <% if can? :update, @plays %>
+<p> <%= @play.play_photos.length %></p>
+
+<% @play.play_photos.each do |photo|  %>
+<p>asdasd</p>
+<%= image_tag painting.image_url(:thumb) %>
+<% end %>
+
+
+
+<% if can? :update, @plays %>
 <%= link_to 'Edit', edit_play_path(@play) %> |
 <% end %>
 <%= link_to 'Back', plays_path %>

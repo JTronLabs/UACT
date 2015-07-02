@@ -28,6 +28,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
     gem 'devise'
     #authorization
     gem 'cancancan', '~>1.10'
+    #image upload processing (resizing etc)
+    gem "rmagick" #requires ImageMagick -- $ sudo apt-get install libmagick++-dev
+    #image uploading    
+    gem "carrierwave"
 
 
 
