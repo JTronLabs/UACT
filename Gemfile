@@ -31,7 +31,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
     #image upload processing (resizing etc)
     gem "rmagick" #requires ImageMagick -- $ sudo apt-get install libmagick++-dev
     #image uploading    
-    gem "carrierwave"
+    gem "carrierwave", github:'carrierwaveuploader/carrierwave'
 
 
 

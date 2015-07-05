@@ -43,6 +43,7 @@ class PlaysController < ApplicationController
   # PATCH/PUT /plays/1.json
   def update
     respond_to do |format|
+        print "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA #{play_params}"
       if @play.update(play_params)
         format.html { redirect_to @play, notice: 'Play was successfully updated.' }
         format.json { render :show, status: :ok, location: @play }
@@ -71,6 +72,6 @@ class PlaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def play_params
-      params.require(:play).permit(:title, :description, :date_of_play)
+        params.require(:play).permit(:title, :description, :date_of_play,:profile_image,{:pictures=>[]} ) #weird notation aroudn :pictures needed to permitted nested (array) attributes in this column field. Otherwise will be blocked by the strong_parameters gem
     end
 end

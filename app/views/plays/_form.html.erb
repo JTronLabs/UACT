@@ -24,11 +24,24 @@
           <%= f.datetime_select :date_of_play %>
       </div>
 
-      <p>
-        <%= f.file_field :image %>
-      </p>
+      <div class="field">
+        <%= f.label :profile_image %><br>
+          <%= f.file_field :profile_image %>
+          <!-- 
+            <%= image_tag @play.profile_image.url(:thumb) if @play.profile_image.present? %>
+            -->
+    </div>
 
-<!-- f.label :remote_image_url, "or image URL" #not working-->
+      <div class="field">
+        <%= f.label :pictures %><br>
+        <%= f.file_field :pictures, multiple: true %>
+    </div>
+<!--
+    <% @play.pictures.each{ |pic| %>
+        <%= image_tag pic.url(:thumb)  %>
+    <% } %>
+-->
+
       <div class="actions">
         <%= f.submit %>
       </div>

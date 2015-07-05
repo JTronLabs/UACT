@@ -1,3 +1,6 @@
 class Play < ActiveRecord::Base
-    has_many    :play_photos, :dependent => :destroy
+    mount_uploaders :pictures, ImageUploader
+    mount_uploader :profile_image, ImageUploader
+    
+    serialize :pictures
 end

@@ -15,16 +15,14 @@
   <%= @play.date_of_play %>
 </p>
 
-<p> <%= @play.play_photos.length %></p>
 
-<% @play.play_photos.each do |photo|  %>
-<p>asdasd</p>
-<%= image_tag painting.image_url(:thumb) %>
-<% end %>
+<%= image_tag @play.profile_image.url(:thumb) if @play.profile_image.present? %>
 
-
+<% @play.pictures.each{ |pic| %>
+    <%= image_tag pic.url(:small_thumb)  %>
+<% } %>
 
 <% if can? :update, @plays %>
-<%= link_to 'Edit', edit_play_path(@play) %> |
+    <%= link_to 'Edit', edit_play_path(@play) %> |
 <% end %>
 <%= link_to 'Back', plays_path %>
