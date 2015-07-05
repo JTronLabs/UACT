@@ -16,10 +16,10 @@
 </p>
 
 
-<%= image_tag @play.profile_image.url(:thumb) if @play.profile_image.present? %>
+<%= link_to( image_tag(@play.profile_image.url(:thumb)) , @play.profile_image.url) if @play.profile_image.present?  %>
 
 <% @play.pictures.each{ |pic| %>
-    <%= image_tag pic.url(:small_thumb)  %>
+    <%= link_to(image_tag(pic.url(:small_thumb)), pic.url)  %>
 <% } %>
 
 <% if can? :update, @plays %>
