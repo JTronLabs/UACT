@@ -6,7 +6,7 @@ gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', github: 'rails/sass-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -32,6 +32,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
     gem "rmagick" #requires ImageMagick -- $ sudo apt-get install libmagick++-dev
     #image uploading    
     gem "carrierwave", github:'carrierwaveuploader/carrierwave'
+    gem 'bootstrap-sass', '~> 3.3.5'
+    gem 'autoprefixer-rails'
 
 
 

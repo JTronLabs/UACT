@@ -15,8 +15,11 @@
   <%= @play.date_of_play %>
 </p>
 
-
-<%= link_to( image_tag(@play.profile_image.url(:thumb)) , @play.profile_image.url) if @play.profile_image.present?  %>
+<% if @play.profile_image.present? %>
+    <%= link_to( image_tag(@play.profile_image.url(:thumb)) , @play.profile_image.url)  %>
+<% else %>
+    <%= link_to( image_tag("fallback/default_image.png", size:"200x200") ,  image_path("fallback/default_image.png") )  %>
+<% end %>
 
 <% @play.pictures.each{ |pic| %>
     <%= link_to(image_tag(pic.url(:small_thumb)), pic.url)  %>
