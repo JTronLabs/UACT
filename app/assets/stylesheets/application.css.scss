@@ -20,9 +20,18 @@
 
 //navbar height
 body {
+  background-image:image-url("concrete_seamless.png");
+  background-repeat: repeat;
   padding-top: 51px;
 }
 
 #login-alert-wrap{
     position:relative;
+}
+
+.navbar-icon{
+    width:20px;
+    height:auto;
+    margin-right:2px;
+    
 }
