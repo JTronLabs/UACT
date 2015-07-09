@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'static_routes/index'
-
-    get 'welcome/index'=>'welcome#index'
+  get 'welcome/index'=>'welcome#index'
 
   devise_for :users
   resources :events

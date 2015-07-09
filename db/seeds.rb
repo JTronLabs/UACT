@@ -11,11 +11,17 @@ User.delete_all
 users = []
 users.push( 
     User.create!(email: 'gvarner@uaschools.org',
+        first_name:'Greg',
+        last_name:'Varner',
+        graduation_year:0,
         password: 'password',
         password_confirmation: 'password')
     )
 users.push(
     User.create!(email: 'a@a.a',
+        first_name:'a',
+        last_name:'aa',
+        graduation_year:3000,
         password: 'password',
         password_confirmation: 'password')
     )
