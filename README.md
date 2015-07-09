@@ -6,4 +6,9 @@ Website in development for Upper Arlington Community of Theatre, Upper Arlington
 
 #### To Run on localhost
 bundle install
+
+rake:db migrate #migrations are not necessarily backwards compatible
+
+rake:db seed
+
 rails s
