@@ -13,14 +13,7 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">       
-        <% if user_signed_in? %>
-          <%= nav_link 'Logout', destroy_user_session_path, :delete %>
-          <%= nav_link 'Edit Profile', edit_user_registration_path %>        
-        <% else %>
-          <%= nav_link 'Login', new_user_session_path %>
-          <%= nav_link 'Register', new_user_registration_path %>
-        <% end %>
+      <ul class="nav navbar-nav"> 
 
           
         <li class="active"> <%= nav_link 'Plays', plays_path %>  </li>

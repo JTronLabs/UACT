@@ -21,14 +21,13 @@
       </div>
 
 
-
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+      <%= f.label :new_password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -36,11 +35,34 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+      <%= f.label :new_password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+
+
+
+<%= @user.last_name %>
+
+<% if @user.profile_image.present? %>
+<%= link_to( image_tag(@user.profile_image.url(:thumb)) , @play.profile_image.url)  %>
+<% else %>
+    <%= link_to( image_tag("fallback/default_image.png", size:"200x200") ,  image_path("fallback/default_image.png") )  %>
+<% end %>
+
+
+
+
+
+
+<br/>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off" %>
+  </div>
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+      <%= f.submit "Submit", class:"btn btn-default" %>
   </div>
 <% end %>
