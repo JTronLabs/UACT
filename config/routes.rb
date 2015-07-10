@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
   get 'static_routes/index'
-  get 'welcome/index'=>'welcome#index'
 
-  devise_for :users
   resources :events
   resources :plays
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
     root 'static_routes#index'
     
     
-    devise_for :users, controllers: { account_update: "custom_devise/registrations" }
+    devise_for :users, controllers: { account_update: "users/registrations", sign_up:"users/registrations" }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
