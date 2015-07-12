@@ -14,6 +14,7 @@ users.push(
         first_name:'Greg',
         last_name:'Varner',
         graduation_year:0,
+        approved:true,
         password: 'password',
         password_confirmation: 'password')
     )
@@ -28,13 +29,26 @@ users.push(
 
 
 Play.delete_all
-test_play = Play.create!(title: "Romeo and Juliet",
-        description: "a dope play fo sho",
-        date_of_play: DateTime.new(2001,2,2)
-    )
 #seeding a profile picture
-test_play.profile_image = Rails.root.join("db/images/test_image.png").open
-test_play.save!
+play_one_profile_image = Rails.root.join("db/images/test1.jpeg").open
+play_two_profile_image = Rails.root.join("db/images/test_image.png").open
+play_three_profile_image = Rails.root.join("db/images/test2.png").open
+
+Play.create!(title: "Romeo and Juliet",
+        description: "a dope play fo sho",
+        date_of_play: DateTime.new(2001,2,2),
+        profile_image: play_one_profile_image
+    )
+Play.create!(title: "JB",
+        description: "a dope play fo sho",
+        date_of_play: DateTime.new(2003,2,2),
+        profile_image: play_three_profile_image
+    )
+Play.create!(title: "Antigone",
+        description: "a dope play fo sho",
+        date_of_play: DateTime.new(2002,2,2),
+        profile_image: play_two_profile_image
+    )
 
 #seeding play pictures - not working
 

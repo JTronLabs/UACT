@@ -26,6 +26,6 @@
 <% } %>
 
 <% if can? :update, @plays %>
-    <%= link_to 'Edit', edit_play_path(@play) %> |
+    <%= link_to 'Edit', edit_play_path(@play), class: 'btn btn-default' %> 
 <% end %>
-<%= link_to 'Back', plays_path %>
+<%= link_to 'Back', plays_path, class: 'btn btn-default' %>

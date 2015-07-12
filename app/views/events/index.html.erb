@@ -18,12 +18,12 @@
         <td><%= event.title %></td>
         <td><%= event.description %></td>
         <td><%= event.date_and_time_of_event %></td>
-        <td><%= link_to 'Show', event %></td>
+        <td><%= link_to 'Show', event,class: 'btn btn-default' %></td>
           <% if can? :update, @events %>
-            <td><%= link_to 'Edit', edit_event_path(event) %></td>
+            <td><%= link_to 'Edit', edit_event_path(event),class: 'btn btn-default' %></td>
           <% end %>
           <% if can? :delete, @events %>
-            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' %></td>
           <% end %>
       </tr>
     <% end %>
@@ -33,5 +33,5 @@
 <br>
 
 <% if can? :create, @plays %>
-    <%= link_to 'New Event', new_event_path %>
+    <%= link_to 'New Event', new_event_path,class: 'btn btn-default' %>
 <% end %>

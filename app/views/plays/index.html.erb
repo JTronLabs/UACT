@@ -1,37 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Plays</h1>
+<% if can? :create, @plays %>
+    <%= link_to 'New Play', new_play_path,class: 'btn btn-default' %>
+<br/>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Date of play</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @plays.each do |play| %>
-      <tr>
-        <td><%= play.title %></td>
-        <td><%= play.description %></td>
-        <td><%= play.date_of_play %></td>
-        <td><%= link_to 'Show', play %></td>
-          <% if can? :update, @plays %>
-            <td><%= link_to 'Edit', edit_play_path(play) %></td>
-          <% end %>
-          <% if can? :delete, @plays %>
-            <td><%= link_to 'Destroy', play, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-      </tr>
+<h1>Plays</h1>
+
+<% @plays.each do |play| %><td>
+    <%= link_to play, class:'play-unit-outer-wrap' do%></td>
+            <div class="play-unit-inner-wrap">
+                <%= image_tag play.profile_image.url(:thumb) if play.profile_image.present? %>
+                <div class="information">
+                    <h4><%= play.title %></h4>
+                    <p><%= "#{play.date_of_play.strftime("%B %d, %Y")}" %></p>
+                </div>  
+            </div>
     <% end %>
-  </tbody>
-</table>
+<% end %>
 
 <br>
 
-<% if can? :create, @plays %>
-    <%= link_to 'New Play', new_play_path %>
-<% end %>

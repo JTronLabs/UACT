@@ -6,6 +6,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
         t.string :last_name, null:false
         t.integer :graduation_year, null:false
         t.string :profile_image
+        t.boolean :approved, default:false
         
         
       ## Database authenticatable

@@ -6,7 +6,7 @@ class PlaysController < ApplicationController
   # GET /plays
   # GET /plays.json
   def index
-    @plays = Play.all
+      @plays = Play.all.order(date_of_play: :desc )
   end
 
   # GET /plays/1
