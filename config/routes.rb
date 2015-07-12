@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     root 'static_routes#index'
     
     
-    devise_for :users, controllers: { account_update: "users/registrations", sign_up:"users/registrations" }
+    devise_for :users, controllers: { registrations: 'users/registrations'  }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
