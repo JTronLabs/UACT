@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  #map controller actions to views
   get 'static_routes/index'
+  get 'static_routes/about', :as => 'about_page'
 
   resources :events
   resources :plays

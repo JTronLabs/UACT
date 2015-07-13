@@ -8,17 +8,19 @@
 
 <h1>Plays</h1>
 
+<div id="show-all-plays">
+    
 <% @plays.each do |play| %><td>
     <%= link_to play, class:'play-unit-outer-wrap' do%></td>
             <div class="play-unit-inner-wrap">
                 <%= image_tag play.profile_image.url(:thumb) if play.profile_image.present? %>
                 <div class="information">
                     <h4><%= play.title %></h4>
-                    <p><%= "#{play.date_of_play.strftime("%B %d, %Y")}" %></p>
-                </div>  
+                    <p><%= play.date_of_play.strftime("%B %d, %Y") %></p>
+                </div>
             </div>
     <% end %>
 <% end %>
-
-<br>
+    
+</div>
 

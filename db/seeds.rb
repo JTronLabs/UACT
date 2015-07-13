@@ -44,16 +44,12 @@ Play.create!(title: "JB",
         date_of_play: DateTime.new(2003,2,2),
         profile_image: play_three_profile_image
     )
-Play.create!(title: "Antigone",
+antigone = Play.create!(title: "Antigone",
         description: "a dope play fo sho",
         date_of_play: DateTime.new(2002,2,2),
         profile_image: play_two_profile_image
     )
 
 #seeding play pictures - not working
-
-#test_play.pictures.push(
-#    Rails.root.join("db/images/test1.jpeg").open    )
-#test_play.pictures.push(       
-#    Rails.root.join("db/images/test2.png").open    )
-#test_play.save!
+#antigone.pictures.push(Rails.root.join("db/images/play_photos/1.jpg").open )
+#antigone.save!

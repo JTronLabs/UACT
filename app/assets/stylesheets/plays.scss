@@ -9,37 +9,67 @@ h1{
     margin:0;
 }
 
-.play-unit-outer-wrap{   
-    vertical-align:top;
-    background-color: white;
-    padding:10px;
-    margin:10px;
+#show-all-plays{
     text-align: center;
-    border-radius: 5px;
-    display: inline-block;
-    width:320px;
-    height:320px;
-    color:black;
-    
-    .play-unit-inner-wrap{
-        background-color:aquamarine;
+    .play-unit-outer-wrap{
+        vertical-align:top;
+        background-color: white;
+        padding:10px;
+        margin:10px;
+        text-align: center;
         border-radius: 5px;
-        width:100%;
-        height:100%;
-        padding:5px;
-        margin:0px;
-        position:relative;
+        display: inline-block;
+        width:320px;
+        height:320px;
+        color:black;
+
+        .play-unit-inner-wrap{
+            background-color: rgba(192, 154, 10,.75);
+            border-radius: 5px;
+            width:100%;
+            height:100%;
+            padding:5px;
+            margin:0px;
+            position:relative;
+        }
+
+        img{
+           padding:5px; 
+        }
+        .information{
+            padding:3px;
+            margin:0px;
+            position:absolute;
+            bottom:0;
+            left:50%;
+            transform: translateX(-50%);
+        }
     }
+    .play-unit-outer-wrap:hover{
+        color:white;
+        background-color: black;
+    }
+}
+
+.play-display{
+    display:block;
+    margin:8em; 
+    text-align: center;
+    
+    h2{
+        margin-bottom: 20px;   
+    }
+}
+.play-pics-list{
+    text-align: center;
     
     img{
-       padding:5px; 
+        margin:10px;
+        padding:0;
     }
-    .information{
-        padding:3px;
-        margin:0px;
-        position:absolute;
-        bottom:0;
-        left:50%;
-        transform: translateX(-50%);
+    
+    a:hover{
+        background-color: transparent;
+        text-decoration: none; 
     }
 }
