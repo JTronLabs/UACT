@@ -1,8 +1,7 @@
 class StaticRoutesController < ApplicationController
 
-  layout "homepage"
-
   def index
+      render :layout=>"homepage"
   end
     
   def about

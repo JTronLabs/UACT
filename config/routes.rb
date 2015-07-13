@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   #map controller actions to views
   get 'static_routes/index'
-  get 'static_routes/about', :as => 'about_page'
+    get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
 
   resources :events
   resources :plays
