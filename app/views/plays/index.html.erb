@@ -5,22 +5,47 @@
 <br/>
 <% end %>
 
+<% play_index=0 %>
 
-<h1>Plays</h1>
+<h1>Upcoming Plays</h1>
 
 <div id="show-all-plays">
     
-<% @plays.each do |play| %><td>
-    <%= link_to play, class:'play-unit-outer-wrap' do%></td>
-            <div class="play-unit-inner-wrap">
-                <%= image_tag play.profile_image.url(:thumb) if play.profile_image.present? %>
-                <div class="information">
-                    <h4><%= play.title %></h4>
-                    <p><%= play.date_of_play.strftime("%B %d, %Y") %></p>
-                </div>
-            </div>
+    <% while play_index<@plays.size and @plays[play_index].date_of_play>Time.now  %>
+            <%= link_to @plays[play_index], class:'play-unit-outer-wrap' do%>
+                    <div class="play-unit-inner-wrap">
+                        <%= image_tag @plays[play_index].profile_image.url(:thumb) if @plays[play_index].profile_image.present? %>
+                        <div class="information">
+                            <h4><%= @plays[play_index].title %></h4>
+                            <p><%= @plays[play_index].date_of_play.strftime("%B %d, %Y") %></p>
+                        </div>
+                    </div>
+            <% end %>
+    
+        <% play_index+=1 %>
     <% end %>
-<% end %>
+    
+</div>
+
+
+
+<h1>Past Plays</h1>
+
+<div id="show-all-plays">
+    
+    <% while play_index<@plays.size  %>
+    <%= link_to @plays[play_index], class:'play-unit-outer-wrap' do%>
+                    <div class="play-unit-inner-wrap">
+                        <%= image_tag @plays[play_index].profile_image.url(:thumb) if @plays[play_index].profile_image.present? %>
+                        <div class="information">
+                            <h4><%= @plays[play_index].title %></h4>
+                            <p><%= @plays[play_index].date_of_play.strftime("%B %d, %Y") %></p>
+                        </div>
+                    </div>
+            <% end %>
+    
+        <% play_index+=1 %>
+    <% end %>
     
 </div>
 

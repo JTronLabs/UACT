@@ -34,6 +34,11 @@ play_one_profile_image = Rails.root.join("db/images/test1.jpeg").open
 play_two_profile_image = Rails.root.join("db/images/test_image.png").open
 play_three_profile_image = Rails.root.join("db/images/test2.png").open
 
+Play.create!(title: "As You Like It",
+        description: "a dope play fo sho",
+        date_of_play: DateTime.new(3000,2,2),
+        profile_image: play_one_profile_image
+    )
 Play.create!(title: "Romeo and Juliet",
         description: "a dope play fo sho",
         date_of_play: DateTime.new(2001,2,2),
