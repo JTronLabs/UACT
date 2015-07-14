@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+    
+    get 'users_custom_routes/index', :as =>'people_page',:path=>"people"
+
   #map controller actions to views
   get 'static_routes/index'
-    get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
+  get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
 
   resources :events
   resources :plays
@@ -10,7 +13,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-    root 'static_routes#index'
+   root 'static_routes#index'
     
     
     devise_for :users, controllers: { registrations: 'users/registrations'  }

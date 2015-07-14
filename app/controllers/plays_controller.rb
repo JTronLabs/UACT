@@ -43,7 +43,6 @@ class PlaysController < ApplicationController
   # PATCH/PUT /plays/1.json
   def update
     respond_to do |format|
-        print "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA #{play_params}"
       if @play.update(play_params)
         format.html { redirect_to @play, notice: 'Play was successfully updated.' }
         format.json { render :show, status: :ok, location: @play }

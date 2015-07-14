@@ -34,8 +34,9 @@ ActiveRecord::Schema.define(version: 20150701212855) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                             null: false
     t.string   "last_name",                              null: false
+    t.string   "description",                            null: false
     t.integer  "graduation_year",                        null: false
-    t.string   "profile_image"
+    t.string   "profile_image",                          null: false
     t.boolean  "approved",               default: false
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false

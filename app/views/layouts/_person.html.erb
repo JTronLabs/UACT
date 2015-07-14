@@ -1,0 +1,18 @@
+<% if user.approved
+    display_class = "approved"
+else
+    display_class = "not-approved"
+end %>
+
+
+<div class="row person <%= display_class %>">
+    
+    <div class="col-md-3 profile-pic">
+        <%= link_to(image_tag(user.profile_image.url(:thumb)), user.profile_image.url)  %>
+    </div>
+    
+    <div class="col-md-9 info">
+        <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
+        <p><%= user.description %></p>
+    </div>
+</div>

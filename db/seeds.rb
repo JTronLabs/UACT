@@ -9,11 +9,14 @@
 
 User.delete_all
 users = []
+person_img =  Rails.root.join("db/images/person.jpg").open
 users.push( 
     User.create!(email: 'gvarner@uaschools.org',
         first_name:'Greg',
         last_name:'Varner',
         graduation_year:0,
+        profile_image:person_img,
+        description:"I rule all with an iron fist!",
         approved:true,
         password: 'password',
         password_confirmation: 'password')
@@ -23,6 +26,8 @@ users.push(
         first_name:'a',
         last_name:'aa',
         graduation_year:3000,
+        profile_image:person_img,
+        description:"Im a freshman! Hi friends!",
         password: 'password',
         password_confirmation: 'password')
     )

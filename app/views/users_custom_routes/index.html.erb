@@ -1,0 +1,13 @@
+
+<% if can? :manage, @non_approved_users %>
+    <% @non_approved_users.each do |person| %>
+        <%= render partial:'layouts/person', locals:{:user => person }
+    %>
+    <% end %>
+<% end %>
+
+
+<% @approved_users.each do |person| %>
+    <%= render partial:'layouts/person',locals:{:user => person } %>
+<% end %>
+
