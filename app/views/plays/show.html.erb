@@ -29,3 +29,5 @@
         <% } %>
     </div>
 <% end %>
+
+<p><%= @play.users.each{|user| "#{user.first_name}" } %></p>

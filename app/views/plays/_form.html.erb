@@ -36,6 +36,17 @@
         <%= f.label :pictures %><br>
         <%= f.file_field :pictures, multiple: true %>
     </div>
+
+
+    <div class="field">
+        <%= f.label "Cast and Crew" %> <br />
+        <%= collection_check_boxes(:works_on, :user_ids, @users, :id, :simple_to_s) %>
+    </div>
+
+
+
+
+
 <!--
     <% @play.pictures.each{ |pic| %>
         <%= image_tag pic.url(:thumb)  %>

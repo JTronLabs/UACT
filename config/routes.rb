@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     
   get 'users_custom_routes/index', :as =>'people_page',:path=>"people"
-    #creating custom routes to delete/approve a user at the click of a button
+    #creating custom routes to delete/approve a user at the click of a button. ':as' defines the method 
     delete 'users_custom_routes/:id' => 'users_custom_routes#destroy', :as => :admin_destroy_user 
     post 'users_custom_routes/:id' => 'users_custom_routes#approve_user', :as => :admin_approve_user
 

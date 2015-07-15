@@ -17,10 +17,12 @@ class PlaysController < ApplicationController
   # GET /plays/new
   def new
     @play = Play.new
+      @users = User.where( approved:true, graduation_year:(Time.now.year - 4)..(Time.now.year + 4) )
   end
 
   # GET /plays/1/edit
   def edit
+    @users = User.where( approved:true, graduation_year:(Time.now.year - 4)..(Time.now.year + 4) )
   end
 
   # POST /plays

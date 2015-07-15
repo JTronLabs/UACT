@@ -16,11 +16,19 @@ end %>
         <p><%= user.description %></p>
     </div>
     
+     <!-- give admin ability to delete/approve/manage users-->
     <% if can? :manage, @non_approved_users and !user.approved %>
-        <div class="col-md-2 info">
+        <div class="col-md-2">
             <%= link_to 'Approve', admin_approve_user_path(user),method: :approve_user,class: 'btn btn-primary' %>
             
             <%= link_to 'Delete', admin_destroy_user_path(user), method: :delete, class: 'btn btn-default' %>
+        </div>
+    <% end %>
+    
+    <!-- link to user's plays-->
+    <% if user.approved %> 
+        <div class="col-md-2">
+            
         </div>
     <% end %>
 </div>

@@ -4,4 +4,11 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+    
+  has_many :works_on, :foreign_key => 'works_on_id'
+  has_many :plays, through: :works_on
+    
+    def simple_to_s
+        return  "#{first_name} #{last_name}, graduates #{graduation_year}"
+    end
 end
