@@ -10,7 +10,7 @@
 
 
 <!-- inform un-approved users that they must be approved before appearing -->
-<% if !current_user.approved %>
+<% if current_user!=nil and !current_user.approved %>
     <h1>Your profile will appear once the site admin approves it. Try again later.</h1>
 <% end %>
 
