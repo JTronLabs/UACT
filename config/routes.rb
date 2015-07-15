@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
     
-    get 'users_custom_routes/index', :as =>'people_page',:path=>"people"
+  get 'users_custom_routes/index', :as =>'people_page',:path=>"people"
+    #creating custom routes to delete/approve a user at the click of a button
+    delete 'users_custom_routes/:id' => 'users_custom_routes#destroy', :as => :admin_destroy_user 
+    post 'users_custom_routes/:id' => 'users_custom_routes#approve_user', :as => :admin_approve_user
 
   #map controller actions to views
   get 'static_routes/index'
@@ -13,10 +16,10 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'static_routes#index'
+  root 'static_routes#index'
     
     
-    devise_for :users, controllers: { registrations: 'users/registrations'  }
+  devise_for :users, controllers: { registrations: 'users/registrations'  }
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

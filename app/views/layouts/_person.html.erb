@@ -11,8 +11,16 @@ end %>
         <%= link_to(image_tag(user.profile_image.url(:thumb)), user.profile_image.url)  %>
     </div>
     
-    <div class="col-md-9 info">
+    <div class="col-md-7 info">
         <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
         <p><%= user.description %></p>
     </div>
+    
+    <% if can? :manage, @non_approved_users and !user.approved %>
+        <div class="col-md-2 info">
+            <%= link_to 'Approve', admin_approve_user_path(user),method: :approve_user,class: 'btn btn-primary' %>
+            
+            <%= link_to 'Delete', admin_destroy_user_path(user), method: :delete, class: 'btn btn-default' %>
+        </div>
+    <% end %>
 </div>

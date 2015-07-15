@@ -1,5 +1,6 @@
-
+<!-- Render un-approved users for Site admin to either approve or delete -->
 <% if can? :manage, @non_approved_users %>
+
     <% @non_approved_users.each do |person| %>
         <%= render partial:'layouts/person', locals:{:user => person }
     %>
@@ -7,6 +8,14 @@
 <% end %>
 
 
+
+<!-- inform un-approved users that they must be approved before appearing -->
+<% if !current_user.approved %>
+    <h1>Your profile will appear once the site admin approves it. Try again later.</h1>
+<% end %>
+
+
+<!-- render all approved users to the public -->
 <% @approved_users.each do |person| %>
     <%= render partial:'layouts/person',locals:{:user => person } %>
 <% end %>
