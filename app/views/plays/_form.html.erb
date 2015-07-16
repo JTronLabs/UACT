@@ -30,17 +30,18 @@
           <!-- 
             <%= image_tag @play.profile_image.url(:thumb) if @play.profile_image.present? %>
             -->
-    </div>
+      </div>
 
       <div class="field">
         <%= f.label :pictures %><br>
         <%= f.file_field :pictures, multiple: true %>
-    </div>
+      </div>
 
 
-    <div class="field">
-        <%= f.label "Cast and Crew" %> <br />
-        <%= collection_check_boxes(:works_on, :user_ids, @users, :id, :simple_to_s) %>
+    <div class="field checkbox-list">
+        <%= f.label "Cast and Crew"%> <br />
+        <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s) %>
+        
     </div>
 
 

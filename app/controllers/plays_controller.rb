@@ -17,7 +17,7 @@ class PlaysController < ApplicationController
   # GET /plays/new
   def new
     @play = Play.new
-      @users = User.where( approved:true, graduation_year:(Time.now.year - 4)..(Time.now.year + 4) )
+    @users = User.where( approved:true, graduation_year:(Time.now.year - 4)..(Time.now.year + 4) )
   end
 
   # GET /plays/1/edit
@@ -44,6 +44,16 @@ class PlaysController < ApplicationController
   # PATCH/PUT /plays/1
   # PATCH/PUT /plays/1.json
   def update
+      #grab user_id from params and then the user_ids values
+      works_on = params[:user_id]
+      works_on = works_on[:user_ids].select{|id|id.length!=0}#rails includes hidden empty string field for checkboxes, must filter it out by removing the 0 length string
+      WorksOn.where(:play_id=>@play.id).destroy_all#remove previous associations
+      works_on.each do |user_id|
+          WorksOn.create(:play_id=>@play.id, :student_role => "aaaaaaaaa",:user_id=>user_id) #create new associations to user   
+     end
+      
+      
+      
     respond_to do |format|
       if @play.update(play_params)
         format.html { redirect_to @play, notice: 'Play was successfully updated.' }
