@@ -5,5 +5,6 @@ class Play < ActiveRecord::Base
     serialize :pictures
     
     has_many :works_on
-    has_many :users, through: :works_on, :foreign_key => 'user_id'
+    has_many :users, :through => :works_on
+    
 end

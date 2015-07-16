@@ -21,16 +21,33 @@ users.push(
         password: 'password',
         password_confirmation: 'password')
     )
-users.push(
-    User.create!(email: 'a@a.a',
-        first_name:'a',
-        last_name:'aa',
-        graduation_year:3000,
-        profile_image:person_img,
-        description:"Im a freshman! Hi friends!",
-        password: 'password',
-        password_confirmation: 'password')
-    )
+
+(0..5).each do |i|
+    users.push(
+        User.create!(email: "aaaaaa#{i}@a.a",
+            first_name:"a#{i}",
+            last_name:'aa',
+            graduation_year:3000,
+            profile_image:person_img,
+            description:"Im a freshman! Hi friends!",
+            password: 'password',
+            password_confirmation: 'password')
+        )
+end
+
+(0..5).each do |i|
+    users.push(
+        User.create!(email: "bbbbb#{i}@a.a",
+            first_name:"a#{i}",
+            last_name:'aa',
+            graduation_year:3000,
+            profile_image:person_img,
+            description:"Im a freshman! Hi friends!",
+            approved:true,
+            password: 'password',
+            password_confirmation: 'password')
+        )
+end
 
 
 Play.delete_all

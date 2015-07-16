@@ -6,9 +6,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
     
   has_many :works_on
-  has_many :plays, through: :works_on, :foreign_key => 'play_id'
+  has_many :plays,:through => :works_on
     
     def simple_to_s
         return  "#{first_name} #{last_name}, graduates #{graduation_year}"
     end
 end
+
