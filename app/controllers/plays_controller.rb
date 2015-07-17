@@ -29,7 +29,7 @@ class PlaysController < ApplicationController
   # POST /plays.json
   def create
     @play = Play.new(play_params)
-
+   
     respond_to do |format|
       if @play.save
         format.html { redirect_to @play, notice: 'Play was successfully created.' }
@@ -39,19 +39,15 @@ class PlaysController < ApplicationController
         format.json { render json: @play.errors, status: :unprocessable_entity }
       end
     end
+      
+      
+      associate_play_with_users(params) #must associate with users after play is created and saved (and therefore has an id)
   end
 
   # PATCH/PUT /plays/1
   # PATCH/PUT /plays/1.json
   def update
-      #grab user_id from params and then the user_ids values
-      works_on = params[:user_id]
-      works_on = works_on[:user_ids].select{|id|id.length!=0}#rails includes hidden empty string field for checkboxes, must filter it out by removing the 0 length string
-      WorksOn.where(:play_id=>@play.id).destroy_all#remove previous associations
-      works_on.each do |user_id|
-          WorksOn.create(:play_id=>@play.id, :student_role => "aaaaaaaaa",:user_id=>user_id) #create new associations to user   
-     end
-      
+      associate_play_with_users( params )
       
       
     respond_to do |format|
@@ -84,5 +80,16 @@ class PlaysController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def play_params
         params.require(:play).permit(:title, :description, :date_of_play,:profile_image,{:pictures=>[]} ) #weird notation aroudn :pictures needed to permitted nested (array) attributes in this column field. Otherwise will be blocked by the strong_parameters gem
+    end
+    
+    def associate_play_with_users( params )
+      works_on = params[:user_id] #grab user_id hash from params
+      works_on = works_on[:user_ids] #select the :user_ids key's values from the hash
+      works_on = works_on.select{|id|id.length!=0}#rails includes hidden empty string field for checkboxes, must filter it out by removing the 0 length string
+        
+      WorksOn.where(:play_id=>@play.id).destroy_all #remove previous associations
+      works_on.each do |user_id|
+          WorksOn.create(:play_id=>@play.id, :student_role => "aaaaaaaaa",:user_id=>user_id) #create new associations to user   
+      end        
     end
 end
