@@ -46,14 +46,14 @@ body {
     }
 }
 
-//
-#checkbox-list input[type="checkbox"] {
-  display: inline-block;
-  width: 10%;
+.user-association-fields{
+    #checkbox-list input[type="checkbox"] {
+      display: inline-block;
+      width: 10%;
+    }
+    #checkbox-list input[type="checkbox"] + label {
+      display: inline-block;
+      margin-left: 10%;
+      width: 80%;
+    }
 }
-#checkbox-list input[type="checkbox"] + label {
-  display: inline-block;
-  margin-left: 10%;
-  width: 80%;
-}
-

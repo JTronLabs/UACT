@@ -73,3 +73,31 @@ h1{
         text-decoration: none; 
     }
 }
+
+
+
+
+
+
+.user-association-fields{
+    .checkbox-list{
+        input[type="checkbox"] {
+          display: inline-block;
+          width: 10%;
+        }
+        input[type="checkbox"] + label {
+          display: inline-block;
+          margin-left: 10%;
+          width: 80%;
+        }
+    }
+    
+    .user-roles-text-list{
+        input[type="text"]{
+            display: block;
+            width:100%;
+        }
+    }    
+}
+
+

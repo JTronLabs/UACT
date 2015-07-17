@@ -47,7 +47,7 @@ class PlaysController < ApplicationController
   # PATCH/PUT /plays/1
   # PATCH/PUT /plays/1.json
   def update
-      associate_play_with_users( params )
+    associate_play_with_users( params )
       
       
     respond_to do |format|
