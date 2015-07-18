@@ -1,40 +1,49 @@
 <p id="notice"><%= notice %></p>
 
+<div id="show-one-play">
+    <% if can? :update, @plays %>
+        <%= link_to 'Edit', edit_play_path(@play), class: 'btn btn-primary' %> 
+    <% end %>
 
-<% if can? :update, @plays %>
-    <%= link_to 'Edit', edit_play_path(@play), class: 'btn btn-primary' %> 
-<% end %>
+    <div class="row play-display">
 
-<div class="row play-display">
-    
-    <div class="col-md-3" >
-        <%= link_to( image_tag(@play.profile_image.url(:large_thumb)) , @play.profile_image.url)  %>
+        <div class="col-md-3" >
+            <%= link_to( image_tag(@play.profile_image.url(:large_thumb)) , @play.profile_image.url)  %>
+        </div>
+
+        <div class="col-md-7 play-information">
+            <h2><%= @play.title %> <small><%= @play.date_of_play.strftime("%B %d, %Y") %></small></h2>
+            <p><%= @play.description %></p>
+        </div>
+
     </div>
-    
-    <div class="col-md-7 play-information">
-        <h2><%= @play.title %> <small><%= @play.date_of_play.strftime("%B %d, %Y") %></small></h2>
-        <p><%= @play.description %></p>
-    </div>
 
-</div>
 
-<% if @play.pictures.present? %>
-    <h3>From the Play</h3>
-
-    <%= link_to "Download all","#", class:"btn btn-default"%>
-
-    <div class='play-pics-list'>
-        <% @play.pictures.each{ |pic| %>
-            <%= link_to(image_tag(pic.url(:large_thumb)), pic.url)  %>
+    <!-- link to students -->
+    <div class="row student-contributions">
+        <h3>Student Contributions</h3>
+        <% @play.users.order(:first_name).each{ |user| %>
+            <% works_on = WorksOn.where(play_id:@play.id, user_id:user.id) %>
+            <% 
+               link_text = "#{user.first_name} #{user.last_name}, #{works_on[0].student_role}" #there will only be 1 works_on relation with exactly this play_id and user_id
+               link_location = "#{students_page_path}#user_#{user.id}" 
+            %>
+        <%= link_to link_text, link_location,class:"btn btn-default" %>
         <% } %>
     </div>
-<% end %>
 
-<p>
-    
-    <% @works_on.each{ |works_on| %>
-        <% user = works_on.user %>
-    <%= link_to "#{user.simple_to_s}, #{works_on.student_role}", "#{people_page_path}#user_#{user.id}" %><br/>
-    <% } %>
+    <div class="row">
+        <!-- display all pics from the play if they're present-->
+        <% if @play.pictures.present? %>
+    <h3>From the Play</h3>
 
-</p>
+            <%= link_to "Download all","#", class:"btn btn-default"%>
+
+            <div class='play-pics-list'>
+                <% @play.pictures.each{ |pic| %>
+                    <%= link_to(image_tag(pic.url(:large_thumb)), pic.url)  %>
+                <% } %>
+            </div>
+        <% end %>
+    </div>
+</div>

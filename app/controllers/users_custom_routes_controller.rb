@@ -1,7 +1,7 @@
 class UsersCustomRoutesController < ApplicationController
   def index
-      @approved_users = User.where(:approved=>true)
-      @non_approved_users = User.where(:approved=>false)
+      @approved_users = User.where(role: :student, approved: true).order(graduation_year: :desc )
+      @non_approved_users = User.where(role: :student, approved: false).order(graduation_year: :desc )
   end
     
 =begin
@@ -33,21 +33,6 @@ def approve_user
     @user.save
     redirect_to people_page_url, notice: "User approved."
 end 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
 end

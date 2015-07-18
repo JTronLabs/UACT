@@ -7,6 +7,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
         t.string :description, null:false
         t.integer :graduation_year, null:false
         t.string :profile_image, null:false
+        
+        t.string :role, default:"student" #also can be admin
         t.boolean :approved, default:false
         
         

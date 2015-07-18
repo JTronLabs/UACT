@@ -1,20 +1,31 @@
+
+<!-- Visually seperate users based on their graduation year -->
+<% tracked_grad_year = -1 %>
+
+
 <!-- inform un-approved users that they must be approved before appearing -->
 <% if current_user!=nil and !current_user.approved %>
     <h1>Your profile will appear once the site admin approves it. Try again later.</h1>
 <% end %>
 
-
-
 <!-- Render un-approved users for Site admin to either approve or delete -->
 <% if can? :manage, @non_approved_users %>
-
     <% @non_approved_users.each do |person| %>
+        <% if person.graduation_year != tracked_grad_year %>
+            <% tracked_grad_year = person.graduation_year %>
+            <%= simple_format "Graduation Year: #{person.graduation_year}",{}, wrapper_tag: "h2" %>
+        <% end %>
         <%= render partial:'layouts/person', locals:{:user => person }
     %>
     <% end %>
 <% end %>
 
+
 <!-- render all approved users to the public -->
 <% @approved_users.each do |person| %>
+<% if person.graduation_year != tracked_grad_year %>
+        <% tracked_grad_year = person.graduation_year %>
+<%= simple_format "Graduation Year: #{person.graduation_year}",{}, wrapper_tag: "h2" %>
+    <% end %>
     <%= render partial:'layouts/person',locals:{:user => person } %>
 <% end %>

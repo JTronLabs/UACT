@@ -51,33 +51,36 @@ h1{
     }
 }
 
-.play-display{
-    display:block;
-    margin:8em; 
-    text-align: center;
-    
-    h2{
-        margin-bottom: 20px;   
+
+#show-one-play{
+
+    .play-display{
+        display:block;
+        margin:8em; 
+        text-align: center;
+
+        h2{
+            margin-bottom: 20px;   
+        }
+    }
+    .play-pics-list{
+        text-align: center;
+
+        img{
+            margin:10px;
+            padding:0;
+        }
+
+        a:hover{
+            background-color: transparent;
+            text-decoration: none; 
+        }
+    }
+
+    .student-contributions{
+        
     }
 }
-.play-pics-list{
-    text-align: center;
-    
-    img{
-        margin:10px;
-        padding:0;
-    }
-    
-    a:hover{
-        background-color: transparent;
-        text-decoration: none; 
-    }
-}
-
-
-
-
-
 
 .user-association-fields{
     .checkbox-list{
