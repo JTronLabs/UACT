@@ -32,8 +32,9 @@
 
 <p>
     
-    <% @play.users.each{ |user| %>
-    <%="#{user.first_name}" %>
+    <% @works_on.each{ |works_on| %>
+        <% user = works_on.user %>
+    <%= link_to "#{user.simple_to_s}, #{works_on.student_role}", "#{people_page_path}#user_#{user.id}" %><br/>
     <% } %>
 
 </p>
