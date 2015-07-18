@@ -5,24 +5,16 @@
 
 .person{
     
-    margin:10px;
+    background-color: white;
+    margin-bottom:50px;
     padding:10px;
     border-radius: 5px;
-    .info{
-    }
+    
     .profile-pic{
         text-align: center;   
     }
     
-    .btn{
-        margin:10px;   
+    .not-approved{
+        background-color: orange;        
     }
-}
-
-.approved{
-    background-color: white;
-}
-
-.not-approved{
-    background-color: orange;        
 }

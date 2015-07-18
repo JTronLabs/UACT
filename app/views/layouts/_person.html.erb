@@ -4,31 +4,41 @@ else
     display_class = "not-approved"
 end %>
 
+<div class="person">
+    <!-- display user's basic info -->
+    <div class="row <%= display_class %>" id="user_<%= user.id %>">
 
-<div class="row person <%= display_class %>" id="user_<%= user.id %>">
-    
-    <div class="col-md-3 profile-pic">
-        <%= link_to(image_tag(user.profile_image.url(:thumb)), user.profile_image.url)  %>
-    </div>
-    
-    <div class="col-md-7 info">
-        <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
-        <p><%= user.description %></p>
-    </div>
-    
-     <!-- give admin ability to delete/approve/manage users-->
-    <% if can? :manage, @non_approved_users and !user.approved %>
-        <div class="col-md-2">
-            <%= link_to 'Approve', admin_approve_user_path(user),method: :approve_user,class: 'btn btn-primary' %>
-            
-            <%= link_to 'Delete', admin_destroy_user_path(user), method: :delete, class: 'btn btn-default' %>
+        <div class="col-md-3 profile-pic">
+            <%= link_to(image_tag(user.profile_image.url(:thumb)), user.profile_image.url)  %>
         </div>
-    <% end %>
+
+        <div class="col-md-7">
+            <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
+            <p><%= user.description %></p>
+        </div>
+
+         <!-- give admin ability to delete/approve/manage users-->
+        <% if can? :manage, @non_approved_users and !user.approved %>
+            <div class="col-md-2">
+                <%= link_to 'Approve', admin_approve_user_path(user),method: :approve_user,class: 'btn btn-primary' %>
+
+                <%= link_to 'Delete', admin_destroy_user_path(user), method: :delete, class: 'btn btn-default' %>
+            </div>
+        <% end %>
+    </div>
     
     <!-- link to user's plays-->
-    <% if user.approved %> 
-        <div class="col-md-2">
-            
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Play Contributions</h4>
+            <% user.plays.order(:date_of_play).each{ |play| %>
+                <% works_on = WorksOn.where(play_id:play.id, user_id:user.id) %>
+                <% 
+                    link_text = "#{play.title}, #{works_on[0].student_role}" #there will only be 1 works_on relation with exactly this play_id and user_id
+                   link_location = "#{plays_path}/#{play.id}" 
+                %>
+            <%= link_to link_text, link_location,class:"btn btn-default" %>
+            <% } %>
         </div>
-    <% end %>
+    </div>
 </div>
