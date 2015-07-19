@@ -10,22 +10,22 @@
 
 <!-- Render un-approved users for Site admin to either approve or delete -->
 <% if can? :manage, @non_approved_users %>
-    <% @non_approved_users.each do |person| %>
+    <% @non_approved_users.each_with_index do |person,index| %>
         <% if person.graduation_year != tracked_grad_year %>
             <% tracked_grad_year = person.graduation_year %>
             <%= simple_format "Graduation Year: #{person.graduation_year}",{}, wrapper_tag: "h2" %>
         <% end %>
-        <%= render partial:'layouts/person', locals:{:user => person }
+<%= render partial:'layouts/person', locals:{:user => person,is_even=>(index%2==0) }
     %>
     <% end %>
 <% end %>
 
 
 <!-- render all approved users to the public -->
-<% @approved_users.each do |person| %>
+<% @approved_users.each_with_index do |person,index| %>
 <% if person.graduation_year != tracked_grad_year %>
         <% tracked_grad_year = person.graduation_year %>
 <%= simple_format "Graduation Year: #{person.graduation_year}",{}, wrapper_tag: "h2" %>
     <% end %>
-    <%= render partial:'layouts/person',locals:{:user => person } %>
+<%= render partial:'layouts/person',locals:{:user => person,:is_even=>(index%2==0) } %>
 <% end %>

@@ -7,11 +7,11 @@
 
     <div class="row play-display">
 
-        <div class="col-md-3" >
+        <div class="col-md-5" >
             <%= link_to( image_tag(@play.profile_image.url(:large_thumb)) , @play.profile_image.url)  %>
         </div>
 
-        <div class="col-md-7 play-information">
+        <div class="col-md-5 play-information">
             <h2><%= @play.title %> <small><%= @play.date_of_play.strftime("%B %d, %Y") %></small></h2>
             <p><%= @play.description %></p>
         </div>

@@ -12,6 +12,7 @@ h1{
 #show-all-plays{
     text-align: center;
     .play-unit-outer-wrap{
+        box-shadow: 0px 0px 10px #888888;
         vertical-align:top;
         background-color: white;
         padding:10px;
@@ -53,10 +54,9 @@ h1{
 
 
 #show-one-play{
-
     .play-display{
         display:block;
-        margin:8em; 
+        margin-bottom:8em; 
         text-align: center;
 
         h2{

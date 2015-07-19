@@ -1,18 +1,23 @@
 <% if user.approved
-    display_class = "approved"
+    approved_or_not_class = "approved"
 else
-    display_class = "not-approved"
+    approved_or_not_class = "not-approved"
 end %>
 
-<div class="person">
+<% if is_even
+    even_or_not_class = "even"
+else
+    even_or_not_class = "odd"
+end %>
+<div class="person <%= even_or_not_class %>">
     <!-- display user's basic info -->
-    <div class="row <%= display_class %>" id="user_<%= user.id %>">
+    <div class="row <%= approved_or_not_class %>" id="user_<%= user.id %>">
 
-        <div class="col-md-3 profile-pic">
+        <div class="col-md-4 profile-pic">
             <%= link_to(image_tag(user.profile_image.url(:thumb)), user.profile_image.url)  %>
         </div>
 
-        <div class="col-md-7">
+        <div class="col-md-6">
             <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
             <p><%= user.description %></p>
         </div>

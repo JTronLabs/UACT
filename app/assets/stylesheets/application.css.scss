@@ -25,6 +25,25 @@ body {
   padding-top: 51px;
 }
 
+#common-background-wrap{
+    background-color: white;
+    box-shadow: 0px 0px 10px #888888;
+    width:70%;
+    margin:0 auto;
+    min-height: 100%;
+    
+    #common-background-inner-wrap{
+        padding: 5%;
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: 768px) { 
+    #common-background-wrap{
+        width:100%;
+    }
+}
+
 #login-alert-wrap{
     position:relative;
 }

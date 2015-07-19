@@ -6,9 +6,10 @@
 .person{
     
     background-color: white;
-    margin-bottom:50px;
-    padding:10px;
+    margin-bottom:40px;
+    padding:5px;
     border-radius: 5px;
+    box-shadow: 0px 0px 10px #888888;
     
     .profile-pic{
         text-align: center;   
@@ -17,4 +18,15 @@
     .not-approved{
         background-color: orange;        
     }
+    
+}
+
+
+.even{
+    background-color: #E8E8E8;
+}
+
+
+.odd{
+
 }
