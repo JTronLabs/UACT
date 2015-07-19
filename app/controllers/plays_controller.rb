@@ -17,7 +17,7 @@ class PlaysController < ApplicationController
   # GET /plays/new
   def new
     @play = Play.new
-    @users = User.where( approved:true, graduation_year:(Time.now.year - 4)..(Time.now.year + 4) )
+    @users = User.where( approved:true, graduation_year:(@play.date_of_play.year)..(@play.date_of_play.year + 4) )
   end
 
   # GET /plays/1/edit
@@ -28,8 +28,8 @@ class PlaysController < ApplicationController
         @prev_users[association.user_id] = association.student_role #get all the data associated with that user (currently only student role)
     end
       
-    @users = User.where( approved:true, graduation_year:(Time.now.year - 4)..(Time.now.year + 4) )
-      @users.merge(@prev_users.to_a) # include previous users with the users shown, thus even if the users graduated 5+ years ago they won't be hidden on the update page
+      
+      @users = User.where( approved:true, graduation_year:(@play.date_of_play.year)..(@play.date_of_play.year + 4) )
   end
 
   # POST /plays
