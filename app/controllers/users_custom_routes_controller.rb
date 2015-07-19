@@ -22,7 +22,7 @@ end
     @user.destroy
 
     if @user.destroy
-        redirect_to people_page_url, notice: "User deleted."
+        redirect_to students_page_url, notice: "User deleted."
     end
   end
    
@@ -31,7 +31,7 @@ def approve_user
     @user = User.find(params[:id])
     @user.approved = true
     @user.save
-    redirect_to people_page_url, notice: "User approved."
+    redirect_to students_page_url, notice: "User approved."
 end 
     
     
