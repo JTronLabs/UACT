@@ -94,15 +94,18 @@ class PlaysController < ApplicationController
     def associate_play_with_users( params )
         user_ids  = params[:user_id] #grab user_id hash from params
         user_roles = params[:user_role]
-        user_ids = user_ids[:user_ids] #select the :user_ids key's values from the hash
-        user_ids = user_ids.select{|id|id.length!=0}#rails includes hidden empty string field for checkboxes, must filter it out by removing the 0 length string
-        puts "AAAAAAAAAAAAAAAAAAAA"
-        puts user_ids
         
-      WorksOn.where(:play_id=>@play.id).destroy_all #remove previous associations
-        user_ids.each do |user_id| #only create relations to items selected in checkbox
-            WorksOn.create(:play_id=>@play.id, :student_role => user_roles[user_id],:user_id=>user_id) #create new associations to user   
-      end        
+        if user_ids != nil
+            user_ids = user_ids[:user_ids] #select the :user_ids key's values from the hash
+            user_ids = user_ids.select{|id|id.length!=0}#rails includes hidden empty string field for checkboxes, must filter it out by removing the 0 length string
+            puts "AAAAAAAAAAAAAAAAAAAA"
+            puts user_ids
+
+            WorksOn.where(:play_id=>@play.id).destroy_all #remove previous associations
+                user_ids.each do |user_id| #only create relations to items selected in checkbox
+                WorksOn.create(:play_id=>@play.id, :student_role => user_roles[user_id],:user_id=>user_id) #create new associations to user   
+          end
+        end
     end
     
 end
