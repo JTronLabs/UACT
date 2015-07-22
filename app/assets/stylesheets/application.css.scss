@@ -82,7 +82,9 @@ body {
 }
 
 //style for forms & fields
-.field{    
+.field, .field_with_errors{
+    width:100%;
+    
     input[type="text"]{
         display: block;
         width:100%;
@@ -95,6 +97,3 @@ body {
     }
 }
 
-.field_with_errors{
-    width:100%;   
-}
