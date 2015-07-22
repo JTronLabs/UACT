@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20150715053327) do
     t.datetime "date_of_play",  null: false
     t.string   "profile_image"
     t.string   "pictures"
+    t.string   "link_to_video"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"

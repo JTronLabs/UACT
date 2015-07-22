@@ -17,7 +17,7 @@
       </div>
       <div class="field">
         <%= f.label :description %><br>
-        <%= f.text_field :description %>
+          <%= f.text_area :description, class:"description" %>
       </div>
       <div class="field">
         <%= f.label :date_of_play %><br>
@@ -35,6 +35,11 @@
       <div class="field">
         <%= f.label :pictures %><br>
         <%= f.file_field :pictures, multiple: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :link_to_video %><br>
+        <%= f.text_field :link_to_video %>
       </div>
 
 

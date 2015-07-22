@@ -52,7 +52,6 @@ body {
     width:20px;
     height:auto;
     margin-right:2px;
-    
 }
 
 #login-wrap{
@@ -81,3 +80,18 @@ body {
 .btn{
     margin:3px;
 }
+
+//style for forms & fields
+.field{    
+    input[type="text"]{
+        display: block;
+        width:100%;
+    }
+    
+    .description{
+        min-width: 100%;
+        max-width: 100%;
+        min-height:12em;
+    }
+}
+
