@@ -17,7 +17,7 @@ class PlaysController < ApplicationController
   # GET /plays/new
   def new
     @play = Play.new
-      @users = User.where( approved:true, graduation_year:(Time.now.year)..(Time.now.year + 4) ) #new plays should use current year instead of play's year (as it doesn't exist yet)
+    @users = User.where( approved:true, graduation_year:(Time.now.year)..(Time.now.year + 4) ) #new plays should use current year instead of play's year (as it doesn't exist yet)
   end
 
   # GET /plays/1/edit
@@ -29,13 +29,15 @@ class PlaysController < ApplicationController
     end
       
       
-      @users = User.where( approved:true, graduation_year:(@play.date_of_play.year)..(@play.date_of_play.year + 4) )
+    @users = User.where( approved:true, graduation_year:(@play.date_of_play.year)..(@play.date_of_play.year + 4) )
   end
 
   # POST /plays
   # POST /plays.json
   def create
     @play = Play.new(play_params)
+    @users = User.where( approved:true, graduation_year:(Time.now.year)..(Time.now.year + 4) ) #new plays should use current year instead of play's year (as it doesn't exist yet). When new play fails validation, users is grabbed from this create method
+
    
     respond_to do |format|
       if @play.save
@@ -86,7 +88,7 @@ class PlaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def play_params
-        params.require(:play).permit(:title, :description, :date_of_play,:profile_image,{:pictures=>[]} ) #weird notation aroudn :pictures needed to permitted nested (array) attributes in this column field. Otherwise will be blocked by the strong_parameters gem
+        params.require(:play).permit(:title, :description, :date_of_play,:profile_image,{:pictures=>[]},:link_to_video ) #weird notation aroudn :pictures needed to permitted nested (array) attributes in this column field. Otherwise will be blocked by the strong_parameters gem
     end
     
     def associate_play_with_users( params )
@@ -94,10 +96,13 @@ class PlaysController < ApplicationController
         user_roles = params[:user_role]
         user_ids = user_ids[:user_ids] #select the :user_ids key's values from the hash
         user_ids = user_ids.select{|id|id.length!=0}#rails includes hidden empty string field for checkboxes, must filter it out by removing the 0 length string
+        puts "AAAAAAAAAAAAAAAAAAAA"
+        puts user_ids
         
       WorksOn.where(:play_id=>@play.id).destroy_all #remove previous associations
         user_ids.each do |user_id| #only create relations to items selected in checkbox
             WorksOn.create(:play_id=>@play.id, :student_role => user_roles[user_id],:user_id=>user_id) #create new associations to user   
       end        
     end
+    
 end
