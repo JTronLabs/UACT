@@ -46,27 +46,30 @@
         <div class="row user-association-fields">
             <div class="col-md-6 field checkbox-list">
                 <%= f.label "Cast and Crew"%> <br />
-                <%= if @users==nil or @users.length==0
-                   simple_format "No users in system graduated around the time of this play" 
-                    end %>
+                <% if @users==nil or @users.length==0 %>
+                   <%= simple_format "No users in system graduated around the time of this play" %>
+                <% else %>
                 
                 <!-- Only auto fill previous users if they exist -->
-                <% if @prev_users!=nil %>
-                    <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s, checked:@prev_users.keys) %>
-                <% else %>
-                    <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s) %>
+                    <% if @prev_users!=nil %>
+                        <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s, checked:@prev_users.keys) %>
+                    <% else %>
+                        <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s) %>
+                    <% end %>
+
                 <% end %>
             </div>
 
             <div class="col-md-6 field user-roles-text-list">
                 <%= f.label "Roles and Responsibilities (eg Actor: Hamlet)"%> <br />
-                
-                <% @users.each do |user| %>
-                    <!-- Only auto fill previous users if they exist -->
-                    <% if @prev_users!=nil %>
-                        <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s,value:@prev_users[user.id] %>
-                    <% else %>
-                        <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s %>
+                <% if @users !=nil %>
+                    <% @users.each do |user| %>
+                        <!-- Only auto fill previous users if they exist -->
+                        <% if @prev_users!=nil %>
+                            <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s,value:@prev_users[user.id] %>
+                        <% else %>
+                            <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s %>
+                        <% end %>
                     <% end %>
                 <% end %>
             </div>
