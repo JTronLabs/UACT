@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150715053327) do
     t.string   "title",         null: false
     t.string   "description",   null: false
     t.datetime "date_of_play",  null: false
-    t.string   "profile_image", null: false
+    t.string   "profile_image"
     t.string   "pictures"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false

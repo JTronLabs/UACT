@@ -8,6 +8,18 @@ class User < ActiveRecord::Base
   has_many :works_on
   has_many :plays,:through => :works_on
     
+    
+    validates :first_name, presence: true
+    validates :last_name, presence: true
+    validates :description, presence: true
+    
+    
+    validates :graduation_year, presence: true
+    validates :profile_image, presence: true
+    validates :description, presence: true
+    
+    
+    
     def simple_to_s
         return  "#{first_name} #{last_name}, graduates #{graduation_year}"
     end

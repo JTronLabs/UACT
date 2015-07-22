@@ -15,7 +15,7 @@
             <% tracked_grad_year = person.graduation_year %>
             <%= simple_format "Graduation Year: #{person.graduation_year}",{}, wrapper_tag: "h2" %>
         <% end %>
-<%= render partial:'layouts/person', locals:{:user => person,is_even=>(index%2==0) }
+<%= render partial:'layouts/person', locals:{:user => person,:is_even=>(index%2==0) }
     %>
     <% end %>
 <% end %>

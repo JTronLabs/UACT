@@ -17,7 +17,7 @@ class PlaysController < ApplicationController
   # GET /plays/new
   def new
     @play = Play.new
-    @users = User.where( approved:true, graduation_year:(@play.date_of_play.year)..(@play.date_of_play.year + 4) )
+      @users = User.where( approved:true, graduation_year:(Time.now.year)..(Time.now.year + 4) ) #new plays should use current year instead of play's year (as it doesn't exist yet)
   end
 
   # GET /plays/1/edit

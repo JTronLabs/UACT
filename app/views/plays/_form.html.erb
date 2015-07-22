@@ -48,7 +48,7 @@
                 <!-- Only auto fill previous users if they exist -->
                 <% if @prev_users!=nil %>
                     <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s, checked:@prev_users.keys) %>
-                <% elsif %>
+                <% else %>
                     <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s) %>
                 <% end %>
             </div>
@@ -60,7 +60,7 @@
                     <!-- Only auto fill previous users if they exist -->
                     <% if @prev_users!=nil %>
                         <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s,value:@prev_users[user.id] %>
-                    <% elsif %>
+                    <% else %>
                         <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s %>
                     <% end %>
                 <% end %>
