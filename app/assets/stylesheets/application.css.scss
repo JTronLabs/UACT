@@ -83,7 +83,6 @@ body {
 
 //style for forms & fields
 .field, .field_with_errors{
-    width:100%;
     
     input[type="text"]{
         display: block;
@@ -95,5 +94,9 @@ body {
         max-width: 100%;
         min-height:12em;
     }
+}
+
+.field_with_errors{//validation errors
+    width:100%;
 }
 
