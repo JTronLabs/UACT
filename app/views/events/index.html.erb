@@ -1,37 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Events</h1>
+<% if can? :create, @events %>
+    <%= link_to 'New Event', new_event_path,class: 'btn btn-primary' %>
+<% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Date and time of event</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<h1>Events</h1>
 
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-        <td><%= event.title %></td>
-        <td><%= event.description %></td>
-        <td><%= event.date_and_time_of_event %></td>
-        <td><%= link_to 'Show', event,class: 'btn btn-default' %></td>
-          <% if can? :update, @events %>
-            <td><%= link_to 'Edit', edit_event_path(event),class: 'btn btn-default' %></td>
-          <% end %>
-          <% if can? :delete, @events %>
-            <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' },class: 'btn btn-default' %></td>
-          <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<% if can? :create, @plays %>
-    <%= link_to 'New Event', new_event_path,class: 'btn btn-default' %>
+<% @events.each_with_index do |event,index| %>
+    <%= render partial:'layouts/event', locals:{:event => event,:is_even=>(index%2==0) } %>
 <% end %>

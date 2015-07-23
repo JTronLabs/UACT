@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'static_routes/index'
   get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
 
-  resources :events
+    resources :events, :except => :show
   resources :plays
     
   # The priority is based upon order of creation: first created -> highest priority.
