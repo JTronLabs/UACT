@@ -4,8 +4,22 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+user_1_to_antigone: 
+    play: antigone
+    user: user_1
+    student_role: Actor: Antigone
+    
+user_2_to_jb: 
+    play: jb
+    user: user_1
+    student_role: Actor: JB
+    
+user_1_to_antigone: 
+    play: antigone
+    user: user_1
+    student_role: Actor:Antigone
+    
+user_1_to_antigone: 
+    play: antigone
+    user: user_1
+    student_role: Actor:Antigone

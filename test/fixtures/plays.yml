@@ -1,11 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  description: MyString
-  date_of_play: 2015-07-01
+antigone:
+  title: Antigone
+  description: Antigone (/ænˈtɪɡəniː/ an-TIG-ə-nee, Ancient Greek: Ἀντιγόνη) is a tragedy by Sophocles written in or before 441 BC.
 
-two:
-  title: MyString
-  description: MyString
-  date_of_play: 2015-07-01
+Chronologically, it is the third of the three Theban plays but was written first.[1] The play expands on the Theban legend that predated it and picks up where Aeschylus Seven Against Thebes ends.
+  date_of_play: 1950-07-01
+
+jb:
+  title: JB
+  description: J.B. is a 1958 play written in free verse by American playwright and poet Archibald MacLeish and is a modern retelling of the story of the biblical figure Job — hence the title: J.B./Job. The play went through several incarnations before it was finally published. MacLeish began the work in 1953 as a one-act production but within three years had expanded it to a full three-act manuscript.
+  date_of_play: 1950-07-01
+
+
+laramie:
+  title: The Laramie Project
+  description: The Laramie Project (2000) is a play by Moisés Kaufman and members of the Tectonic Theater Project (specifically, Leigh Fondakowski, Stephen Belber, Greg Pierotti, Barbara Pitts, Stephen Wangh, Amanda Gronich, Sara Lambert, John McAdams, Maude Mitchell, Andy Paris, and Kelli Simpkins) about the reaction to the 1998 murder of University of Wyoming gay student Matthew Shepard in Laramie, Wyoming.[1] The murder was denounced as a hate crime and brought attention to the lack of hate crime laws in various states, including Wyoming.[2]
+  date_of_play: 2014-07-01

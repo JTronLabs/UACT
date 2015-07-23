@@ -1,11 +1,29 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-# This model initially had no columns defined.  If you add columns to the
-# model remove the '{}' from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+varner: 
+    role: admin
+    email: gvarner@uaschools.org
+    first_name: Greg
+    last_name:  Varner
+    graduation_year: 0
+    profile_image: db/images/person.jpg
+    description: I am the director and admin of this site!
+    approved: true
+    password: password
+    password_confirmation: password
+
+
+<% 100.times do |n| %>
+    user_<%= n %>:
+        #default = role: student
+        email: <%= "user#{n}@example.com" %>
+        first_name: <%= "Billy_#{n}" %>
+        last_name:  <%= "TheKid_#{n}@example.com" %>
+        graduation_year: <%= 1950+n %>
+        profile_image: db/images/person.jpg
+        description: <%= "description_#{n}" %>
+        approved: <%= n%2==0 %> #50% approved
+        password: password
+        password_confirmation: password
+<% end %>
+
