@@ -16,55 +16,8 @@ User.create!( #not included in users array
     email: 'gvarner@uaschools.org',
     first_name:'Greg',
     last_name:'Varner',
-    graduation_year:0,
-    profile_image:person_img,
-    description:"I am the director and admin of this site!",
-    approved:true,
     password: 'password',
     password_confirmation: 'password')
-
-
-(0..5).each do |i|
-    users.push(
-        User.create!(email: "aaaaaa#{i}@a.a",
-            first_name:"a#{i}",
-            last_name:'aa',
-            graduation_year:Time.now.year,
-            profile_image:person_img,
-            description:"Im a freshman! Hi friends!",
-            password: 'password',
-            password_confirmation: 'password')
-        )
-end
-
-(0..5).each do |i|
-    users.push(
-        User.create!(email: "bbbbb#{i}@a.a",
-            first_name:"b#{i}",
-            last_name:'bb',
-            graduation_year:Time.now.year,
-            profile_image:person_img,
-            description:"Im a freshman! Hi friends!",
-            approved:true,
-            password: 'password',
-            password_confirmation: 'password')
-        )
-end
-
-
-(0..10).each do |i|
-    users.push(
-        User.create!(email: "ccccccc#{i}@a.a",
-            first_name:"c#{i}",
-            last_name:'cc',
-            graduation_year:2000+rand(30),
-            profile_image:person_img,
-            description:"lorem ipsum !",
-            approved:true,
-            password: 'password',
-            password_confirmation: 'password')
-        )
-end
 
 
 
@@ -107,18 +60,6 @@ plays.push(
 #seeding play pictures - not working
 #antigone.pictures.push(Rails.root.join("db/images/play_photos/1.jpg").open )
 #antigone.save!
-
-
-
-WorksOn.delete_all
-plays.each do |play|
-    users.each do |user|
-        if user.role != 'admin'
-            WorksOn.create(:play_id=>play.id, :student_role => "Actor: Hamlet",:user_id=>user.id) #create new associations to user 
-        end
-    end
-end
-
 
 
 

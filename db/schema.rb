@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150715053327) do
 
-  create_table "events", force: :cascade do |t|
-    t.string   "title",                  null: false
-    t.string   "description",            null: false
-    t.datetime "date_and_time_of_event", null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "plays", force: :cascade do |t|
     t.string   "title",         null: false
     t.string   "description",   null: false
@@ -36,11 +28,7 @@ ActiveRecord::Schema.define(version: 20150715053327) do
   create_table "users", force: :cascade do |t|
     t.string   "first_name",                                 null: false
     t.string   "last_name",                                  null: false
-    t.string   "description",                                null: false
-    t.integer  "graduation_year",                            null: false
-    t.string   "profile_image",                              null: false
     t.string   "role",                   default: "student"
-    t.boolean  "approved",               default: false
     t.string   "email",                  default: "",        null: false
     t.string   "encrypted_password",     default: "",        null: false
     t.string   "reset_password_token"
@@ -58,13 +46,5 @@ ActiveRecord::Schema.define(version: 20150715053327) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-
-  create_table "works_ons", force: :cascade do |t|
-    t.string   "student_role", null: false
-    t.integer  "play_id",      null: false
-    t.integer  "user_id",      null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
 
 end
