@@ -4,13 +4,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
         #custom fields
         t.string :first_name, null:false
         t.string :last_name, null:false
-        t.string :description, null:false
-        t.integer :graduation_year, null:false
-        t.string :profile_image, null:false
         
         t.string :role, default:"student" #also can be admin
-        t.boolean :approved, default:false
-        
         
       ## Database authenticatable
       t.string :email,              null: false, default: ""

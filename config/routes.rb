@@ -1,15 +1,9 @@
 Rails.application.routes.draw do
-    
-    get 'users_custom_routes/index', :as =>'students_page',:path=>"students"
-    #creating custom routes to delete/approve a user at the click of a button. ':as' defines the method 
-    delete 'users_custom_routes/:id' => 'users_custom_routes#destroy', :as => :admin_destroy_user 
-    post 'users_custom_routes/:id' => 'users_custom_routes#approve_user', :as => :admin_approve_user
 
   #map controller actions to views
   get 'static_routes/index'
   get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
 
-    resources :events, :except => :show
   resources :plays
     
   # The priority is based upon order of creation: first created -> highest priority.

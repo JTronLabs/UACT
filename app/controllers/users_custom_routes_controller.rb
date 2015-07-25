@@ -15,7 +15,6 @@ class UsersCustomRoutesController < ApplicationController
     end
   end
 end
-=end
     
   def destroy
     @user = User.find(params[:id])
@@ -34,5 +33,6 @@ def approve_user
     redirect_to students_page_url, notice: "User approved."
 end 
     
+=end
     
 end

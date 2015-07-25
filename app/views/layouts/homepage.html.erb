@@ -29,9 +29,11 @@
         <% end %>
     </div>
     
-    
-    <%= yield %>
-    
+    <div id="common-background-wrap">
+        <div class="container-fluid" id="common-background-inner-wrap">
+            <%= yield %>
+        </div>
+    </div>  
     
     <%= render :partial=>'layouts/signin' %>
 </body>
