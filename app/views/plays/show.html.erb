@@ -19,18 +19,6 @@
     </div>
 
 
-    <!-- link to students -->
-    <div class="row student-contributions">
-        <h3>Student Contributions</h3>
-        <% @play.users.order(:first_name).each{ |user| %>
-            <% works_on = WorksOn.where(play_id:@play.id, user_id:user.id) %>
-            <% 
-               link_text = "#{user.first_name} #{user.last_name}, #{works_on[0].student_role}" #there will only be 1 works_on relation with exactly this play_id and user_id
-               link_location = "#{students_page_path}#user_#{user.id}" 
-            %>
-        <%= link_to link_text, link_location,class:"btn btn-default" %>
-        <% } %>
-    </div>
 
     <div class="row">
         <!-- display all pics from the play if they're present-->

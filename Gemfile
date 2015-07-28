@@ -34,7 +34,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
     gem "carrierwave", github:'carrierwaveuploader/carrierwave'
     gem 'bootstrap-sass', '~> 3.3.5'
     gem 'autoprefixer-rails'
-
+    gem 'mercury-rails', git: 'https://github.com/jejacks0n/mercury.git'
 
 
 

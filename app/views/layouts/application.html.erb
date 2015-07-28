@@ -17,8 +17,6 @@
     
 <body>
     
-    <%= render :partial =>'layouts/navigation_bar' %>
-    
     <div>
         <!-- Devise check Authentication -->
         <% if notice %>
@@ -30,13 +28,13 @@
     </div>
     
     <div id="common-background-wrap">
+        <%= render :partial =>'layouts/navigation_bar' %>
+        
         <div class="container-fluid" id="common-background-inner-wrap">
             <%= yield %>
         </div>
+        <%= render :partial =>'layouts/footer' %>
     </div>  
-    
-    <!--
-    <%= render :partial=>'layouts/signin' %>
--->
+
 </body>
 </html>

@@ -3,39 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-body,html{
- height:100%;   
-}
-.outter-div {
-  position: relative;
-  height: 100%;
-  width:100%;
-    
-    .inner-div {
-      background-color: rgba(192, 154, 10,.75);
-      position: absolute;
-      width:100%;
-      height:20em;
-      text-align: center;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-}
-
-#welcome-heading{
-    font-size: 10em;
-    color:white;
-    margin:0.1em;
-    padding:0;
-}
-
-#welcome-heading-subtext{
-    color:white;
-    font-size: 2em;
-    margin:0.2em;
-    padding:0;
-}
-
 #class-tabs{
     margin-top:4em;
     

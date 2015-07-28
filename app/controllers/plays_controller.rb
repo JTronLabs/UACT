@@ -17,26 +17,16 @@ class PlaysController < ApplicationController
   # GET /plays/new
   def new
     @play = Play.new
-    @users = User.where( approved:true, graduation_year:(Time.now.year)..(Time.now.year + 4) ) #new plays should use current year instead of play's year (as it doesn't exist yet)
   end
 
   # GET /plays/1/edit
   def edit
-    #find all the previous user associations with this play
-    @prev_users = Hash.new
-    WorksOn.where(play_id: @play.id).each do |association|
-        @prev_users[association.user_id] = association.student_role #get all the data associated with that user (currently only student role)
-    end
-      
-      
-    @users = User.where( approved:true, graduation_year:(@play.date_of_play.year)..(@play.date_of_play.year + 4) )
   end
 
   # POST /plays
   # POST /plays.json
   def create
     @play = Play.new(play_params)
-    @users = User.where( approved:true, graduation_year:(Time.now.year)..(Time.now.year + 4) ) #new plays should use current year instead of play's year (as it doesn't exist yet). When new play fails validation, users is grabbed from this create method
 
    
     respond_to do |format|
@@ -49,16 +39,11 @@ class PlaysController < ApplicationController
       end
     end
       
-      
-      associate_play_with_users(params) #must associate with users after play is created and saved (and therefore has an id)
   end
 
   # PATCH/PUT /plays/1
   # PATCH/PUT /plays/1.json
-  def update
-    associate_play_with_users( params )
-      
-      
+  def update      
     respond_to do |format|
       if @play.update(play_params)
         format.html { redirect_to @play, notice: 'Play was successfully updated.' }
@@ -89,23 +74,6 @@ class PlaysController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def play_params
         params.require(:play).permit(:title, :description, :date_of_play,:profile_image,{:pictures=>[]},:link_to_video ) #weird notation aroudn :pictures needed to permitted nested (array) attributes in this column field. Otherwise will be blocked by the strong_parameters gem
-    end
-    
-    def associate_play_with_users( params )
-        user_ids  = params[:user_id] #grab user_id hash from params
-        user_roles = params[:user_role]
-        
-        if user_ids != nil
-            user_ids = user_ids[:user_ids] #select the :user_ids key's values from the hash
-            user_ids = user_ids.select{|id|id.length!=0}#rails includes hidden empty string field for checkboxes, must filter it out by removing the 0 length string
-            puts "AAAAAAAAAAAAAAAAAAAA"
-            puts user_ids
-
-            WorksOn.where(:play_id=>@play.id).destroy_all #remove previous associations
-                user_ids.each do |user_id| #only create relations to items selected in checkbox
-                WorksOn.create(:play_id=>@play.id, :student_role => user_roles[user_id],:user_id=>user_id) #create new associations to user   
-          end
-        end
     end
     
 end
