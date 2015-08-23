@@ -1,16 +1,18 @@
 Rails.application.routes.draw do
 
   mount Mercury::Engine => '/'
-  #map controller actions to views
-  get 'static_routes/index'
-  get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
-
+    
+    
   resources :plays
+  get 'static_routes/index'#map controller actions to views
+  get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
+  get 'plays/upcoming_plays', :as => 'upcoming_plays', :path=>'upcoming_plays'
+  get 'plays/archived_plays', :as => 'archived_plays',:path =>'archived_plays'
+
     
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # You can have the root of your site routed with "root"
   root 'static_routes#index'
     
     

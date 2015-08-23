@@ -1,12 +1,21 @@
 class PlaysController < ApplicationController
-  before_action :set_play, only: [:show, :edit, :update, :destroy]
-  load_and_authorize_resource 
+    before_action :set_play, only: [:show, :edit, :update, :destroy]
+  #load_and_authorize_resource 
     #before_action :authenticate_user!, only: [:edit, :update, :destroy, :create] #only allow users to edit the DB, anyone can read. Note these routes are only called when someone clicks 'create' (or edit or delete), this doesn't stop the forms from being served
 
   # GET /plays
   # GET /plays.json
   def index
-      @plays = Play.all.order(date_of_play: :desc )
+      
+  end
+    
+  def upcoming_plays
+      @plays = Play.where("date_of_play >= ?",Time.now ).order(date_of_play: :desc )
+  end
+    
+    
+  def archived_plays
+      @plays = Play.where("date_of_play < ?",Time.now ).order(date_of_play: :desc )
   end
 
   # GET /plays/1
