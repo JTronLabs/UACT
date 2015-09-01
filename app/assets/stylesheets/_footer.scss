@@ -1,11 +1,11 @@
-$height:60px;
+$footer_height:60px;
 
-.footer {
+footer {
   position: absolute;
   bottom: 0;
   left:0;
   right:0;
   width: 100%;
-  height: $height;
+  height: $footer_height;
   background:linear-gradient(#d3d3d3, #A9A9A9);
 } 
