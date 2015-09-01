@@ -4,6 +4,6 @@ class StaticRoutesController < ApplicationController
       #render :layout=>"homepage"
   end
     
-  def about
+  def courses
   end
 end

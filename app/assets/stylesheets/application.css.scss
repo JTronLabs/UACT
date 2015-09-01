@@ -16,7 +16,7 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "navigation_bar";
+@import "navigation_bar_colors";
 @import "footer";
 @import "header";
 
@@ -54,10 +54,13 @@ html,body{
     position:relative;
 }
 
-.navbar-icon{
-    width:20px;
-    height:auto;
-    margin-right:2px;
+.navbar{
+    text-align: center;
+    font-weight: bold;
+    .navbar-icon{
+        width:20px;
+        height:auto;
+    }
 }
 
 #login-wrap{

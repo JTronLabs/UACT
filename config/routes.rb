@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     
   resources :plays
   get 'static_routes/index'#map controller actions to views
-  get 'static_routes/about', :as => 'about_page', :path=>"about" #path changes name of URL, as creates helper methods for linking
+    get 'static_routes/courses', :as => 'courses_page', :path=>"courses" #path changes name of URL, as creates helper methods for linking
   get 'plays/upcoming_plays', :as => 'upcoming_plays', :path=>'upcoming_plays'
   get 'plays/archived_plays', :as => 'archived_plays',:path =>'archived_plays'
 
