@@ -1,4 +1,4 @@
-<%= link_to play, class:'play-unit-outer-wrap' do %>
+<%= link_to plays_path(play), class:'play-unit-outer-wrap' do %>
     <div class="play-unit-inner-wrap">
         <%= image_tag play.profile_image.url(:thumb) if play.profile_image.present? %>
         <div class="information">

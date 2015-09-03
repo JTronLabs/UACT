@@ -1,20 +1,28 @@
 Rails.application.routes.draw do
 
   mount Mercury::Engine => '/'
+  #:path changes name of URL
+  #:as creates helper methods for linking
     
+  #map controller actions to views
     
-  resources :plays
-  get 'static_routes/index'#map controller actions to views
-    get 'static_routes/courses', :as => 'courses_page', :path=>"courses" #path changes name of URL, as creates helper methods for linking
-  get 'plays/upcoming_plays', :as => 'upcoming_plays', :path=>'upcoming_plays'
-  get 'plays/archived_plays', :as => 'archived_plays',:path =>'archived_plays'
-
-    
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
+    #static_routes routes
+  get  'static_routes/index'
   root 'static_routes#index'
+  post 'static_routes/mercury_update_index', :as => 'mercury_update_index_page', :path=>"mercury_update_index" 
+  post 'staic_routes/mercury_update_classes', :as => 'mercury_update_classes_page', :path=>"mercury_update_classes"
+  get  'static_routes/courses', :as => 'courses_page', :path=>"courses"
     
+    resource :plays do
+        #Member actions are supposed to route to a single record
+        #Collection routes to a collection of records
+        collection do
+            get 'upcoming'#, :as => 'upcoming_plays', :path=>'upcoming_plays'
+            get 'archived'#, :as => 'archived_plays',:path =>'archived_plays'
+        end
+    end
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".    
     
   devise_for :users, controllers: { registrations: 'users/registrations'  }
   # Example of regular route:

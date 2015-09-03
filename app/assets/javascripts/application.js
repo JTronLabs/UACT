@@ -18,4 +18,3 @@
 //= require bootstrap-sprockets
 //= require plays
 //= require static_routes
-//= require users_custom_routes

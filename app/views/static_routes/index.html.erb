@@ -1,10 +1,10 @@
-<div class="outter-div" >
-  <div class="inner-div">
-      <div class="row">
-          <div class="main-content">
-              <h1 id="welcome-heading"><strong>UACT</strong></h1>
-              <h1 id="welcome-heading-subtext">All the world’s a stage...</h1>
-              <%= link_to 'Get Started', plays_path,class:"btn btn-default" %>
-          </div>
-  </div>
+<div id="homepage_content" data-mercury="full" contenteditable="true" class="index-info">
+    <%= @homepage %>
 </div>
+
+    <%= link_to "Edit Page", 
+        "/editor",
+        class:"btn btn-default",
+        id:"edit_link", #HTML id. Used in mercury.js to hide this link after clicking it
+        data:{ save_url: mercury_update_index_page_path } #route for mercury to save to. relevant path is extracted in mercury.js
+    %>
