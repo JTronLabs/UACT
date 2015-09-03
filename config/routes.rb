@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   post 'staic_routes/mercury_update_classes', :as => 'mercury_update_classes_page', :path=>"mercury_update_classes"
   get  'static_routes/courses', :as => 'courses_page', :path=>"courses"
     
-    resource :plays do
+    resources :plays do
         #Member actions are supposed to route to a single record
         #Collection routes to a collection of records
         collection do
