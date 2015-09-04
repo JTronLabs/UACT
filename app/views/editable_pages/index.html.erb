@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+
+<div id="homepage_content" data-mercury="full" class="index-info">
+    <%= raw @homepage.body %>
+</div>
+
+<% if can? :manage, @homepage %>
+    <%= link_to "Edit Page", 
+        "/editor",
+        class:"btn btn-default",
+        id:"edit_link", #Used in mercury.js to find this tag
+        data:{ save_url: mercury_update_index_page_path(@homepage) }
+    %>
+<% end %>
+
+
+
+
+<!--
+<% if can? :manage, @editable_pages %>
+    <h1>Listing Editable Pages</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @editable_pages.each do |editable_page| %>
+          <tr>
+            <td><%= link_to 'Show', editable_page %></td>
+            <td><%= link_to 'Edit', edit_editable_page_path(editable_page) %></td>
+            <td><%= link_to 'Destroy', editable_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <br>
+
+    <%= link_to 'New Editable page', new_editable_page_path %>
+<% end %>
+-->

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount Mercury::Engine => '/'
   #:path changes name of URL
   #:as creates helper methods for linking
@@ -7,18 +6,28 @@ Rails.application.routes.draw do
   #map controller actions to views
     
     #static_routes routes
-  get  'static_routes/index'
-  root 'static_routes#index'
-  post 'static_routes/mercury_update_index', :as => 'mercury_update_index_page', :path=>"mercury_update_index" 
-  post 'staic_routes/mercury_update_classes', :as => 'mercury_update_classes_page', :path=>"mercury_update_classes"
-  get  'static_routes/courses', :as => 'courses_page', :path=>"courses"
+    
+  #get  'static_routes/index'
+  #post 'static_routes/mercury_update_index', :as => 'mercury_update_index_page', :path=>"mercury_update_index" 
+  #post 'staic_routes/mercury_update_classes', :as => 'mercury_update_classes_page', :path=>"mercury_update_classes"
+  #get  'static_routes/courses', :as => 'courses_page', :path=>"courses"
+    
+    resources :editable_pages do
+        member do
+            post 'mercury_update_index'
+            post 'mercury_update_classes'
+        end
+        collection do
+            get 'courses'
+        end
+    end
+    
+  root 'editable_pages#index'
     
     resources :plays do
-        #Member actions are supposed to route to a single record
-        #Collection routes to a collection of records
         collection do
-            get 'upcoming'#, :as => 'upcoming_plays', :path=>'upcoming_plays'
-            get 'archived'#, :as => 'archived_plays',:path =>'archived_plays'
+            get 'upcoming'
+            get 'archived'
         end
     end
   # The priority is based upon order of creation: first created -> highest priority.

@@ -9,7 +9,7 @@
 <section id="class-tabs">
   <ul class="nav nav-tabs nav-justified">
       <% @classes.each do |name, class_info|%>
-        <li data-mercury="full" contenteditable="true"><a data-toggle="tab" href="#<%= name %>"><%= name %></a>
+        <li data-mercury="full" contenteditable="true"><a data-toggle="tab" href="#<%= name.downcase.tr(" ","_") %>"><%= name %></a>
             <% if can? :manage, @classes #@page needs to be assigned %>
             <%= link_to "Delete", "",class:"btn btn-danger" %>
             <% end %>
@@ -27,7 +27,7 @@
   <div class="tab-content">
       
       <% @classes.each do |name, class_info|%>
-        <li data-mercury="full" contenteditable="true"><a data-toggle="tab" href="#<%= name %>"><%= class_info %></a></li>
+      <li data-mercury="full" contenteditable="true"><a data-toggle="tab" href="#<%= name.downcase.tr(" ","_") %>"><%= class_info %></a></li>
       <% end %>
       
       <!--

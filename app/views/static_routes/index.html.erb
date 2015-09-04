@@ -2,9 +2,11 @@
     <%= @homepage %>
 </div>
 
+<% if can? :manage,@homepage %>
     <%= link_to "Edit Page", 
         "/editor",
         class:"btn btn-default",
         id:"edit_link", #HTML id. Used in mercury.js to hide this link after clicking it
-        data:{ save_url: mercury_update_index_page_path } #route for mercury to save to. relevant path is extracted in mercury.js
+data:{ save_url: mercury_update_index_page_path(@homepage)
     %>
+<% end %>

@@ -19,7 +19,21 @@ User.create!( #not included in users array
     password: 'password',
     password_confirmation: 'password')
 
-
+EditablePage.delete_all
+EditablePage.create!(
+    classification: "homepage",
+    body: "<p>THIS IS MY BODY</p>"    
+    )
+EditablePage.create!(
+    classification: "courses",
+    title: "<h3 style=\"color:red\">Public Speaking</h3>",
+    body: "<p>This class is about fun stuff!</p>"
+    )
+EditablePage.create!(
+    classification: "courses",
+    title: "<h3 style=\"color:red\">Class1</h3>",
+    body: "<p>This class is about more fun stuff!</p>"
+    )
 
 Play.delete_all
 plays=[]
