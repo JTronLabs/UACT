@@ -2,10 +2,10 @@ class EditablePagesController < ApplicationController
   before_action :set_editable_page, only: [:show, :edit, :update, :destroy]
 
     
-    def mercury_update_classes
+    def mercury_update_courses
         #@classes = MercuryPage.find(params[:id])
         #...
-        render text: "Saved!"
+        render text: ""
     end
     
     def mercury_update_index

@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     resources :editable_pages do
         member do
             put 'mercury_update_index'
-            put 'mercury_update_classes'
         end
         collection do
+            put 'mercury_update_courses'
             get 'courses'
         end
     end

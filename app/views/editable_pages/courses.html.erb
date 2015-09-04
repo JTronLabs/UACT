@@ -1,8 +1,4 @@
 <% 
-#function for turning an EditablePage.title into a css ID by removing HTML tags, replacing whitespace, and turning to lowercase
-def id_name(course_title_html)
-    return ActionView::Base.full_sanitizer.sanitize(course_title_html).downcase.tr(" ","_")
-end 
 #functions for making the first element the active class
 def add_active_class(index)
     if index==0
@@ -11,28 +7,33 @@ def add_active_class(index)
 end
 def add_active_class_with_fadein(index)
     if index==0
-        return " in active "#the 'in' class makes the tab content visible when page is first loaded
+        return " active in "#the 'in' class makes the tab content visible when page is first loaded
     end
 end
 %>
     
 
-<% if can? :manage, @classes %>
+<% if can? :manage, @courses %>
+
     <!-- To get the Mercury editor interface on this page, navigate to ROOT/editor/courses -->
-    <%= link_to "Edit Classes", "/editor"+courses_editable_pages_path,class:"btn btn-default" %>
+    <%= link_to "Edit Classes", 
+        "/editor"+courses_editable_pages_path,
+        class:"btn btn-default",
+        id:"edit_link", #Used in mercury.js to find this tag
+data:{ save_url: mercury_update_courses_editable_pages_url } %>
     <%= link_to "Add Class",
         editable_pages_path(
             editable_page:{
                 classification: 'courses',
                 body:'Edit me!',
-                title:'NewClass',
+                title:"New Class",
                 created_at:DateTime.now,
                 updated_at:DateTime.now
                 }
             ),
         :method=>:post,
         class:"btn btn-default" %>
-    <br/>
+<br/>
     <% if @courses != nil %>
       <% @courses.each do |course|%>
         <%= link_to "Delete #{ActionView::Base.full_sanitizer.sanitize(course.title)}", course, method: :delete, data: { confirm: 'Are you sure? This cannot be undone (but you can create new classes)!' },class:"btn btn-danger" %>
@@ -44,10 +45,10 @@ end
 
 <% if @courses != nil %>
     <section id="class-tabs">
-      <ul class="nav nav-tabs nav-justified">
+      <ul class="nav nav-tabs nav-justified" role="tablist">
           <% @courses.each_with_index do |course,index|%>
-            <li data-mercury="full" class="<%=add_active_class(index) %>">
-              <a data-toggle="tab" href="#<%= id_name(course.title) %>">
+            <li class="<%=add_active_class(index) %>" role="presentation">
+                <a data-mercury="full" data-toggle="tab" id="<%= "tab_link_id_is_#{course.id}" %>" href="#<%= "tab_content_id_is_#{course.id}" %>" >
                   <%= raw course.title %>
               </a>
             </li>
@@ -56,7 +57,7 @@ end
 
       <div class="tab-content">
           <% @courses.each_with_index do |course,index|%>
-              <div id="<%= id_name(course.title) %>" data-mercury="full" class="tab-pane fade <%=add_active_class_with_fadein(index) %>">
+          <div id="<%= "tab_content_id_is_#{course.id}" %>" data-mercury="full" class="tab-pane fade <%=add_active_class_with_fadein(index) %>">
                   <%= raw course.body %>
               </div>
           <% end %>
