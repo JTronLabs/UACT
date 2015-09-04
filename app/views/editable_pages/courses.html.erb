@@ -19,8 +19,24 @@ end
 
 <% if can? :manage, @classes %>
     <!-- To get the Mercury editor interface on this page, navigate to ROOT/editor/courses -->
-    <%= link_to "Edit Classes", "/editor"+courses_page_path,class:"btn btn-default" %>
-    <%= link_to "Add Class", "/editor"+courses_page_path,class:"btn btn-default" %>
+    <%= link_to "Edit Classes", "/editor"+courses_editable_pages_path,class:"btn btn-default" %>
+    <%= link_to "Add Class",
+        editable_pages_path(
+            classification: 'courses',
+            body:'Edit me!',
+            title:'NewClass',
+            created_at:DateTime.now,
+            updated_at:DateTime.now
+            ),
+        :method=>:post,
+        class:"btn btn-default" %>
+    <br/>
+    <% if @courses != nil %>
+      <% @courses.each do |course|%>
+        <%= link_to "Delete #{ActionView::Base.full_sanitizer.sanitize(course.title)}", course, method: :delete, data: { confirm: 'Are you sure? This cannot be undone (but you can create new classes)!' },class:"btn btn-danger" %>
+      <% end %>
+    <% end %>
+
 <% end %>
 
 
@@ -32,9 +48,6 @@ end
               <a data-toggle="tab" href="#<%= id_name(course.title) %>">
                   <%= raw course.title %>
               </a>
-              <% if can? :manage, @courses %>
-                  <%= link_to "Delete", "",class:"btn btn-danger" %>
-              <% end %>
             </li>
           <% end %>
       </ul>

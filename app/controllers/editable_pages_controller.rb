@@ -90,6 +90,6 @@ class EditablePagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def editable_page_params
-      params[:editable_page]
+        params.permit(:classification,:title,:body)
     end
 end
