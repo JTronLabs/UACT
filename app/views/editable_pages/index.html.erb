@@ -10,15 +10,35 @@
         "/editor",
         class:"btn btn-default",
         id:"edit_link", #Used in mercury.js to find this tag
-        data:{ save_url: mercury_update_index_page_path(@homepage) }
+        data:{ save_url: mercury_update_index_editable_page_path(@homepage) }
     %>
 <% end %>
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--
-<% if can? :manage, @editable_pages %>
+<% if can? :manage, @editable_pages and @editable_pages !=nil %>
     <h1>Listing Editable Pages</h1>
 
     <table>

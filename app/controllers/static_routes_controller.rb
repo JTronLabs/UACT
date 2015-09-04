@@ -16,8 +16,8 @@ class StaticRoutesController < ApplicationController
     end
     
     def mercury_update_index
-        #@homepage = MercuryPage.find(params[:id])
-        #@homepage.content = params[:content][:homepage_content]
+        @homepage = MercuryPage.find(params[:id])
+        @homepage.body = params[:content][:homepage_content]
         #...
         render text: "Saved!"
     end

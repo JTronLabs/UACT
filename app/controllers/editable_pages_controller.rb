@@ -9,10 +9,10 @@ class EditablePagesController < ApplicationController
     end
     
     def mercury_update_index
-        #@homepage = MercuryPage.find(params[:id])
-        #@homepage.content = params[:content][:homepage_content]
-        #...
-        render text: "Saved!"
+        @homepage = EditablePage.find(params[:id])
+        @homepage.body = params[:content][:homepage_content][:value]
+        @homepage.save!
+        render text: ""
     end
     
     # GET /editable_pages/courses

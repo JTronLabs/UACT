@@ -456,15 +456,14 @@ window.Mercury = {
 
 
 
-//CUSTOM CODE 
-//hide 'Edit Page with Mercury' link after mercury has been loaded on a page. Link must have id: edit_link
+//CUSTOM CODE
 $(window).bind('mercury:ready', function() {
-  var link = $('#mercury_iframe').contents().find('#edit_link');
-  Mercury.saveURL = link.data('save-url'); //extract the saveURL for mercury that was encoded in the HTML data tag
-  link.hide(); //hide edit url
+    var link = $('#mercury_iframe').contents().find('#edit_link');//extract the saveURL for mercury that was encoded in the HTML data tag
+    Mercury.saveUrl =link.data('save-url');
+    console.log("Mercury save URL: "+mercuryInstance.saveUrl);
+    link.hide();//hide edit url
 });
 
-//redirect back to non-editor page after clicking SAVE
 $(window).bind('mercury:saved', function() {
-  window.location = window.location.href.replace(/\/editor\//i, '/');
+    window.location.href = window.location.href.replace(/\/editor\//i, '/');
 });
