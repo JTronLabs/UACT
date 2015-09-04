@@ -3,8 +3,22 @@ class EditablePagesController < ApplicationController
 
     
     def mercury_update_courses
-        #@classes = MercuryPage.find(params[:id])
-        #...
+        courses_infos = params[:content]
+        courses_infos.each{|course_info|
+            label = course_info[0]
+            new_val = course_info[1][:value]
+            
+            id = label.delete("^0-9")
+            course = EditablePage.where("id == ?",id).last
+            
+            if label.index("title") != nil
+                course.title = new_val
+            elsif label.index("body") != nil
+                course.body = new_val
+            end
+            
+            course.save!
+        }
         render text: ""
     end
     
