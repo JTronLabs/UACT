@@ -4,7 +4,6 @@
  *
  * Minimum jQuery requirements are 1.7
  *= require_self
- *
  * You can include the Rails jQuery ujs script here to get some nicer behaviors in modals, panels and lightviews when
  * using :remote => true within the contents rendered in them.
  * require jquery_ujs
@@ -447,23 +446,45 @@ window.Mercury = {
   // ## Debug Mode
   //
   // Turning debug mode on will log events and other various things (using console.debug if available).
-  debug: false
-
+  debug: false,
+    
+    
+    
+    
+    //CUSTOM CODE
+    onload:function(){
+        Mercury.on('saved',function(){
+            console.log("ASDASDASD");
+            window.location.href = window.location.href.replace(/\/editor\//i, '/');            
+        });
+        Mercury.on('ready',function(){
+            var link = $('#mercury_iframe').contents().find('#edit_link');//extract the saveURL that was encoded in the HTML data tag
+            Mercury.saveUrl =link.data('save-url');
+            console.log("Mercury save URL: "+Mercury.saveUrl);
+            link.hide();//hide edit url
+        });
+    }
+    
 };
 
 
 
 
-
+/*
 
 //CUSTOM CODE
 $(window).bind('mercury:ready', function() {
     var link = $('#mercury_iframe').contents().find('#edit_link');//extract the saveURL for mercury that was encoded in the HTML data tag
     Mercury.saveUrl =link.data('save-url');
-    console.log("Mercury save URL: "+mercuryInstance.saveUrl);
+    console.log("Mercury save URL: "+Mercury.saveUrl);
     link.hide();//hide edit url
 });
 
+        Mercury.on('saved',function(){
+            window.location.href = window.location.href.replace(/\/editor\//i, '/');            
+        });
 $(window).bind('mercury:saved', function() {
+    console.log("mercury saved event set");
     window.location.href = window.location.href.replace(/\/editor\//i, '/');
 });
+*/
