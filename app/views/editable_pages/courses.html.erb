@@ -22,11 +22,13 @@ end
     <%= link_to "Edit Classes", "/editor"+courses_editable_pages_path,class:"btn btn-default" %>
     <%= link_to "Add Class",
         editable_pages_path(
-            classification: 'courses',
-            body:'Edit me!',
-            title:'NewClass',
-            created_at:DateTime.now,
-            updated_at:DateTime.now
+            editable_page:{
+                classification: 'courses',
+                body:'Edit me!',
+                title:'NewClass',
+                created_at:DateTime.now,
+                updated_at:DateTime.now
+                }
             ),
         :method=>:post,
         class:"btn btn-default" %>

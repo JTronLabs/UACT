@@ -17,8 +17,7 @@ class EditablePagesController < ApplicationController
     
     # GET /editable_pages/courses
     def courses
-      @courses = EditablePage.where("classification == ?","courses")        
-        puts @courses.last.title
+      @courses = EditablePage.where("classification == ?","courses")
     end
     
   # GET /editable_pages
@@ -90,6 +89,6 @@ class EditablePagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def editable_page_params
-        params.permit(:classification,:title,:body)
+        params.require(:editable_page).permit(:classification,:title,:body)
     end
 end
