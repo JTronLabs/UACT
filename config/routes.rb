@@ -3,15 +3,7 @@ Rails.application.routes.draw do
   #:path changes name of URL
   #:as creates helper methods for linking
     
-  #map controller actions to views
-    
-    #static_routes routes
-    
-  #get  'static_routes/index'
-  #post 'static_routes/mercury_update_index', :as => 'mercury_update_index_page', :path=>"mercury_update_index" 
-  #post 'staic_routes/mercury_update_classes', :as => 'mercury_update_classes_page', :path=>"mercury_update_classes"
-  #get  'static_routes/courses', :as => 'courses_page', :path=>"courses"
-    
+  #map controller actions to views    
     resources :editable_pages do
         member do
             put 'mercury_update_index'

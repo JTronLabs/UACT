@@ -17,4 +17,4 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require plays
-//= require static_routes
+//= require editable_pages
