@@ -36,8 +36,7 @@ EditablePage.create!(
     )
 EditablePage.create!(
     classification: "homepage_right",
-    body: "<a class=\"btn btn-info\" href=\"\">Buy Tickets</a>
-        <a class=\"btn btn-info\" href=\"\">Support UACT</a>"    
+    body: "<p>Make links to ticket purchase and UACT donation here</p>"    
     )
 EditablePage.create!(
     classification: "courses",
