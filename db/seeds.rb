@@ -8,7 +8,6 @@
 
 
 User.delete_all
-users = []
 person_img =  Rails.root.join("db/images/person.jpg").open
 
 User.create!( #not included in users array
@@ -16,6 +15,13 @@ User.create!( #not included in users array
     email: 'gvarner@uaschools.org',
     first_name:'Greg',
     last_name:'Varner',
+    password: 'password',
+    password_confirmation: 'password')
+User.create!( #not included in users array
+    role:"admin",
+    email: 'random.emails.226@gmail.com',
+    first_name:'James',
+    last_name:'Lowrey',
     password: 'password',
     password_confirmation: 'password')
 
