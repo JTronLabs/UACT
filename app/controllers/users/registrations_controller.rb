@@ -38,7 +38,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
-    
+
   # If you have extra params to permit, append them to the sanitizer.
    def configure_sign_up_params
        devise_parameter_sanitizer.for(:sign_up)<<[:first_name,:last_name,:profile_image,:graduation_year,:description,:email,:password,:password_confirmation]

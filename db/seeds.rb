@@ -21,8 +21,17 @@ User.create!( #not included in users array
 
 EditablePage.delete_all
 EditablePage.create!(
-    classification: "homepage",
-    body: "<p>THIS IS MY BODY</p>"    
+    classification: "homepage_left",
+    body: "<h3>Director</h3>"    
+    )
+EditablePage.create!(
+    classification: "homepage_mid",
+    body: "<h1>UACT</h1>"    
+    )
+EditablePage.create!(
+    classification: "homepage_right",
+    body: "<a class=\"btn btn-info\" href=\"\">Buy Tickets</a>
+        <a class=\"btn btn-info\" href=\"\">Support UACT</a>"    
     )
 EditablePage.create!(
     classification: "courses",

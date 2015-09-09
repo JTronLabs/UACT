@@ -17,26 +17,28 @@
     
 <body>
     
-    <div>
-        <!-- Devise check Authentication -->
-        <% if notice %>
-          <p class="alert alert-success"><%= notice %></p>
-        <% end %>
-        <% if alert %>
-          <p class="alert alert-danger"><%= alert %></p>
-        <% end %>
         <!-- 
+    <div>
         <% flash.each do |name,msg| %>
             <%= content_tag :div, msg, class:"flash #{name} alert alert-info" %>
         <% end %>
-        -->
     </div>
+        -->
     
     <div id="common-background-wrap">
+        <div class="container-fluid" >
         <%= render :partial =>'layouts/header' %>
-        <%= render :partial =>'layouts/navigation_bar' %>
-        
-        <div class="container-fluid" id="common-background-inner-wrap">
+        <%= render :partial =>'layouts/navigation_bar' %>    
+            <!-- Devise check authentication -->
+            <div>
+                <% if notice %>
+                  <p class="alert alert-success"><%= notice %></p>
+                <% end %>
+                <% if alert %>
+                  <p class="alert alert-danger"><%= alert %></p>
+                <% end %>
+            </div>
+            
             <%= yield %>
         </div>
         <%= render :partial =>'layouts/footer' %>

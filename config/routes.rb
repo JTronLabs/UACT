@@ -5,10 +5,8 @@ Rails.application.routes.draw do
     
   #map controller actions to views    
     resources :editable_pages do
-        member do
-            put 'mercury_update_index'
-        end
         collection do
+            put 'mercury_update_index'
             put 'mercury_update_courses'
             get 'courses'
         end
