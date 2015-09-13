@@ -85,6 +85,50 @@ plays.push(
         )
     )
 
+plays.push(
+    Play.create!(title: "Romeo and Juliet",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2001,2,2),
+            profile_image: play_one_profile_image
+        )
+    )
+plays.push(
+    Play.create!(title: "JB",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2003,2,2),
+            profile_image: play_three_profile_image
+        )
+    )
+plays.push(
+    antigone = Play.create!(title: "Antigone",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2002,2,2),
+            profile_image: play_two_profile_image
+        )
+    )
+
+plays.push(
+    Play.create!(title: "Romeo and Juliet",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2001,2,2),
+            profile_image: play_one_profile_image
+        )
+    )
+plays.push(
+    Play.create!(title: "JB",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2003,2,2),
+            profile_image: play_three_profile_image
+        )
+    )
+plays.push(
+    antigone = Play.create!(title: "Antigone",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2002,2,2),
+            profile_image: play_two_profile_image
+        )
+    )
+
 #seeding play pictures - not working
 #antigone.pictures.push(Rails.root.join("db/images/play_photos/1.jpg").open )
 #antigone.save!
