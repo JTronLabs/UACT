@@ -3,17 +3,16 @@ class EditablePagesController < ApplicationController
 
     
     def mercury_update_courses
-        courses_infos = params[:content]
-        courses_infos.each{|course_info|
-            label = course_info[0]
-            new_val = course_info[1][:value]
+        params[:content].each{|editable_field|
+            css_id_label = editable_field[0]
+            new_val = editable_field[1][:value]
             
-            id = label.delete("^0-9")
+            id = css_id_label.delete("^0-9")
             course = EditablePage.where("id == ?",id).last
             
-            if label.index("title") != nil
+            if css_id_label.index("title") != nil
                 course.title = new_val
-            elsif label.index("body") != nil
+            elsif css_id_label.index("body") != nil
                 course.body = new_val
             end
             
@@ -23,9 +22,14 @@ class EditablePagesController < ApplicationController
     end
     
     def mercury_update_index
-        homepage = EditablePage.find(params[:id])
-        homepage.body = params[:content][:homepage_content][:value]
-        homepage.save!
+        params[:content].each{|editable_field|
+            css_id_label = editable_field[0]
+            new_val = editable_field[1][:value]
+            
+            entity = EditablePage.where("classification == ?",css_id_label).last
+            entity.body = new_val
+            entity.save!
+        }
         render text: ""
     end
     
@@ -37,8 +41,9 @@ class EditablePagesController < ApplicationController
   # GET /editable_pages
   # GET /editable_pages.json
   def index
-    @homepage = EditablePage.where("classification == ?","homepage").last
-    #@editable_pages = EditablePage.all
+      @homepage_content_left = EditablePage.where("classification == ?","homepage_left").last
+      @homepage_content_mid = EditablePage.where("classification == ?","homepage_mid").last
+      @homepage_content_right = EditablePage.where("classification == ?","homepage_right").last
   end
 
   # GET /editable_pages/1

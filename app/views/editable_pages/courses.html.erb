@@ -26,9 +26,7 @@ data:{ save_url: mercury_update_courses_editable_pages_url } %>
             editable_page:{
                 classification: 'courses',
                 body:'Edit me!',
-                title:"New Class",
-                created_at:DateTime.now,
-                updated_at:DateTime.now
+                title:"New Class"
                 }
             ),
         :method=>:post,
@@ -36,7 +34,7 @@ data:{ save_url: mercury_update_courses_editable_pages_url } %>
 <br/>
     <% if @courses != nil %>
       <% @courses.each do |course|%>
-        <%= link_to "Delete #{ActionView::Base.full_sanitizer.sanitize(course.title)}", course, method: :delete, data: { confirm: 'Are you sure? This cannot be undone (but you can create new classes)!' },class:"btn btn-danger" %>
+        <%= link_to "Delete #{ActionView::Base.full_sanitizer.sanitize(course.title)}", course, method: :delete, data: { confirm: 'Are you sure? This cannot be undone (but you can create new courses)!' },class:"btn btn-danger" %>
       <% end %>
     <% end %>
 

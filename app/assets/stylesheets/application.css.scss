@@ -19,12 +19,14 @@
 @import "navigation_bar_colors";
 @import "footer";
 @import "header";
+@import "forms";
 
 
 body {
   background-image:image-url("concrete_seamless.png");
   background-repeat: repeat;
 }
+
 html,body{
     height: 100%;
 }
@@ -32,14 +34,16 @@ html,body{
 #common-background-wrap{
     padding-bottom: $footer_height;
     position:relative;
+    display:block;
     background-color: white;
     box-shadow: 0px 0px 10px #888888;
     width:70%;
     margin:0 auto;
     min-height: 100%;
     
-    #common-background-inner-wrap{
-        padding: 5%;
+    .container-fluid{
+        margin:0;
+        padding:0;
     }
 }
 
@@ -62,58 +66,10 @@ html,body{
         height:auto;
     }
 }
-
-#login-wrap{
-    position:fixed;
-    bottom:10px;
-    right:10px;
-    a{
-        font-weight: bold;
-        padding:15px;
-    }
-}
-
-.user-association-fields{
-    #checkbox-list input[type="checkbox"] {
-      display: inline-block;
-      width: 10%;
-    }
-    #checkbox-list input[type="checkbox"] + label {
-      display: inline-block;
-      margin-left: 10%;
-      width: 80%;
-    }
-}
-
-
 .btn{
     margin:3px;
 }
 
-//style for forms & fields
-.field, .field_with_errors{
-    
-    input[type="text"]{
-        display: block;
-        width:100%;
-    }
-    
-    .description{
-        min-width: 100%;
-        max-width: 100%;
-        min-height:12em;
-    }
-}
-
-.field_with_errors{//validation errors
-    width:100%;
-}
-
-
-.even{
-    background-color: #E8E8E8;
-}
-
-.odd{
-    background-color: white;
+#devise-wrap{
+    text-align: center;
 }

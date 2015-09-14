@@ -1,33 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-
-<div id="homepage_content" data-mercury="full" class="index-info">
-    <%= raw @homepage.body %>
-</div>
-
 <% if can? :manage, @homepage %>
     <%= link_to "Edit Page", 
         "/editor",
         class:"btn btn-default",
         id:"edit_link", #Used in mercury.js to find this tag
-        data:{ save_url: mercury_update_index_editable_page_path(@homepage) }
+data:{ save_url: mercury_update_index_editable_pages_url([@homepage_content_left,@homepage_content_mid,@homepage_content_right]) }
     %>
 <% end %>
 
+<div id="homepage">
+    
+    <!-- This push, pull, and ordering of the left/mid is confusing, but it is here so that the left content is left on big screens, and underneath the mid content on small screens-->
+    <div id="<%= @homepage_content_mid.classification %>" data-mercury="full" class="col-lg-6 col-lg-push-3">
+        <%= raw @homepage_content_mid.body %>
+    </div>
+    
+    <div id="<%= @homepage_content_left.classification %>" data-mercury="full" class="col-lg-3 col-lg-pull-6">
+        <%= raw @homepage_content_left.body %>
+    </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    <div id="<%= @homepage_content_right.classification %>" data-mercury="full" class="col-lg-3">
+        <%= raw @homepage_content_right.body %>
+    </div>
+</div>
 
 
 

@@ -8,7 +8,6 @@
 
 
 User.delete_all
-users = []
 person_img =  Rails.root.join("db/images/person.jpg").open
 
 User.create!( #not included in users array
@@ -18,11 +17,26 @@ User.create!( #not included in users array
     last_name:'Varner',
     password: 'password',
     password_confirmation: 'password')
+User.create!( #not included in users array
+    role:"admin",
+    email: 'random.emails.226@gmail.com',
+    first_name:'James',
+    last_name:'Lowrey',
+    password: 'password',
+    password_confirmation: 'password')
 
 EditablePage.delete_all
 EditablePage.create!(
-    classification: "homepage",
-    body: "<p>THIS IS MY BODY</p>"    
+    classification: "homepage_left",
+    body: "<h3>Director</h3>"    
+    )
+EditablePage.create!(
+    classification: "homepage_mid",
+    body: "<h1>UACT</h1>"    
+    )
+EditablePage.create!(
+    classification: "homepage_right",
+    body: "<p>Make links to ticket purchase and UACT donation here</p>"    
     )
 EditablePage.create!(
     classification: "courses",
@@ -49,6 +63,50 @@ plays.push(
             profile_image: play_one_profile_image
         )
     )
+plays.push(
+    Play.create!(title: "Romeo and Juliet",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2001,2,2),
+            profile_image: play_one_profile_image
+        )
+    )
+plays.push(
+    Play.create!(title: "JB",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2003,2,2),
+            profile_image: play_three_profile_image
+        )
+    )
+plays.push(
+    antigone = Play.create!(title: "Antigone",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2002,2,2),
+            profile_image: play_two_profile_image
+        )
+    )
+
+plays.push(
+    Play.create!(title: "Romeo and Juliet",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2001,2,2),
+            profile_image: play_one_profile_image
+        )
+    )
+plays.push(
+    Play.create!(title: "JB",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2003,2,2),
+            profile_image: play_three_profile_image
+        )
+    )
+plays.push(
+    antigone = Play.create!(title: "Antigone",
+            description: "a dope play fo sho",
+            date_of_play: DateTime.new(2002,2,2),
+            profile_image: play_two_profile_image
+        )
+    )
+
 plays.push(
     Play.create!(title: "Romeo and Juliet",
             description: "a dope play fo sho",
