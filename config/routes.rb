@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   #:as creates helper methods for linking
     
   #map controller actions to views    
-    resources :editable_pages do
+    resources :editable_pages, :path => '' do
         collection do
             put 'mercury_update_index'
             put 'mercury_update_courses'
