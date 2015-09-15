@@ -1,12 +1,18 @@
 <footer>
-    <div class="col-md-4 col-md-offset-4">
-        <p>Site maintained by Greg Varner. To report issues please contact gvarner@uaschools.org</p>
+    <div class="location">
+        <p>1950 North Mallway Drive<br/>
+Upper Arlington, Ohio 43221<br/>
+(614) 487-5000</p>
     </div>
-    <div class="col-md-offset-2 col-md-2">
+    
         <% if user_signed_in? %>
             <%= link_to 'Logout', destroy_user_session_path, :method=>:delete,class:"btn btn-default"  %>
         <%else%>
             <%= link_to 'Login', new_user_session_path,class:"btn btn-default" %>
         <% end %>
+    
+    <div class="contact">
+        <p>gvarner@uaschools.org</p>
+        <%= link_to 'UA Schools', "http://www.uaschools.org/"%>
     </div>
 </footer>

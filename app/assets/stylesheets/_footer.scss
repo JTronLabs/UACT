@@ -1,4 +1,5 @@
-$footer_height:60px;
+
+$footer_height:75px;
 
 footer {
     position: absolute;
@@ -9,4 +10,15 @@ footer {
     height: $footer_height;
     background:linear-gradient(#d3d3d3, #A9A9A9);
     text-align: center;
+    
+    .location{
+        margin:5px;
+        float:left;
+        display: inline-block;
+    }
+    .contact{
+        margin:5px;
+        float:right;
+        display: inline-block;
+    }
 } 
