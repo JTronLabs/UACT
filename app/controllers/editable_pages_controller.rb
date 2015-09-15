@@ -8,7 +8,7 @@ class EditablePagesController < ApplicationController
             new_val = editable_field[1][:value]
             
             id = css_id_label.delete("^0-9")
-            course = EditablePage.where("id == ?",id).last
+            course = EditablePage.where("id = ?",id).last
             
             if css_id_label.index("title") != nil
                 course.title = new_val
@@ -26,7 +26,7 @@ class EditablePagesController < ApplicationController
             css_id_label = editable_field[0]
             new_val = editable_field[1][:value]
             
-            entity = EditablePage.where("classification == ?",css_id_label).last
+            entity = EditablePage.where("classification = ?",css_id_label).last
             entity.body = new_val
             entity.save!
         }
@@ -35,15 +35,15 @@ class EditablePagesController < ApplicationController
     
     # GET /editable_pages/courses
     def courses
-      @courses = EditablePage.where("classification == ?","courses")
+      @courses = EditablePage.where("classification = ?","courses")
     end
     
   # GET /editable_pages
   # GET /editable_pages.json
   def index
-      @homepage_content_left = EditablePage.where("classification == ?","homepage_left").last
-      @homepage_content_mid = EditablePage.where("classification == ?","homepage_mid").last
-      @homepage_content_right = EditablePage.where("classification == ?","homepage_right").last
+      @homepage_content_left = EditablePage.where("classification = ?","homepage_left").last
+      @homepage_content_mid = EditablePage.where("classification = ?","homepage_mid").last
+      @homepage_content_right = EditablePage.where("classification = ?","homepage_right").last
   end
 
   # GET /editable_pages/1
