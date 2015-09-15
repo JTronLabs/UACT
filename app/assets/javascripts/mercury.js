@@ -454,15 +454,16 @@ window.Mercury = {
     //CUSTOM CODE
     onload:function(){
         Mercury.on('saved',function(){
-            console.log("Mercury info saved!");
-            window.location.href = window.location.href.replace(/\/editor\//i, '/');            
+            window.location.href = window.location.href.replace("/editor", '');
+           
+            console.log("Mercury info saved!");         
         });
         
         Mercury.on('ready',function(){
             var link = $('#mercury_iframe').contents().find('#edit_link');//extract the saveURL that was encoded in the HTML data tag
-            Mercury.saveUrl =link.data('save-url');
+            Mercury.saveUrl = link.data('save-url');
             console.log("Mercury save URL: "+Mercury.saveUrl);
-            link.hide();//hide edit url
+            link.hide();//hide edit url when mercury is open
         });
     }
     
