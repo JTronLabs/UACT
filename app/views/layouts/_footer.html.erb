@@ -1,17 +1,13 @@
 <footer>
-    <div class="location">
-        <p>1950 North Mallway Drive<br/>
-Upper Arlington, Ohio 43221<br/>
-(614) 487-5000</p>
-    </div>
-    
+    <div class="footer_left">
         <% if user_signed_in? %>
             <%= link_to 'Logout', destroy_user_session_path, :method=>:delete,class:"btn btn-default"  %>
         <%else%>
             <%= link_to 'Login', new_user_session_path,class:"btn btn-default" %>
         <% end %>
+    </div>
     
-    <div class="contact">
+    <div class="footer_right">
         <p>gvarner@uaschools.org</p>
         <%= link_to 'UA Schools', "http://www.uaschools.org/"%>
     </div>

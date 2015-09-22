@@ -15,6 +15,12 @@ class ImageUploader < CarrierWave::Uploader::Base
   def store_dir
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
+  
+    #Heroku has a read-only filesystem, so uploads must be stored on S3 and cannot be cached in the public directory. 
+    #Note that these techniques will disable the feature of making uploads work across form redisplays
+  def cache_dir
+    "#{Rails.root}/tmp/uploads"
+  end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   # def default_url
