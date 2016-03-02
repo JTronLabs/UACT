@@ -1,11 +1,15 @@
 <div id="show-all-plays">
 
+    <% if can? :manage, @plays %>
+      <%= link_to "New Play", new_play_path, class:"btn btn-default" %>
+    <% end %>
+
     <% if @plays.count == 0 %>
       <p>There doesn't seem to be anything here</p>
     <% else
       curr_yr = @plays[0].date_of_play.year
       end %>
-      
+
     <div id="<%= curr_yr %>"><!-- This div is required to initiate the first play grouping -->
     <%  @plays.each do |current_play| %>
         <% if(curr_yr != current_play.date_of_play.year)

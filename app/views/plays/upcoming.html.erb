@@ -1,4 +1,8 @@
 <div id="show-all-plays">
+    <% if can? :manage, @plays %>
+      <%= link_to "New Play", new_play_path, class:"btn btn-default" %>
+    <% end %>
+    
     <% @plays.each do |current_play| %>
         <%= render partial: "layouts/play_link" ,
             locals: {play: current_play} %>
@@ -7,4 +11,6 @@
     <% if @plays.count == 0 %>
       <p>There doesn't seem to be anything here</p>
     <% end %>
+
+
 </div>
