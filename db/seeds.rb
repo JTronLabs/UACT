@@ -40,12 +40,12 @@ EditablePage.create!(
     )
 EditablePage.create!(
     classification: "courses",
-    title: "<h3 style=\"color:red\">Public Speaking</h3>",
+    title: "Public Speaking",
     body: "<p>This class is about fun stuff!</p>"
     )
 EditablePage.create!(
     classification: "courses",
-    title: "<h3 style=\"color:red\">Class1</h3>",
+    title: "Class1",
     body: "<p>This class is about more fun stuff!</p>"
     )
 

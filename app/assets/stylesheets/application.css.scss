@@ -40,15 +40,19 @@ html,body{
     width:70%;
     margin:0 auto;
     min-height: 100%;
-    
+
     .container-fluid{
         margin:0;
         padding:0;
     }
 }
 
+#page-content{
+  padding:10px;
+}
+
 /* Small devices (tablets, 768px and up) */
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     #common-background-wrap{
         width:95%;
     }
@@ -69,6 +73,7 @@ html,body{
 .btn{
     margin:3px;
 }
+
 
 #devise-wrap{
     text-align: center;

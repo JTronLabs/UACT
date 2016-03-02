@@ -46,7 +46,7 @@ data:{ save_url: mercury_update_courses_editable_pages_url } %>
     <section id="class-tabs">
       <ul class="nav nav-tabs nav-justified" role="tablist">
           <% @courses.each_with_index do |course,index|%>
-            <li class="<%=add_active_class(index) %>" role="presentation">
+            <li class="<%=add_active_class(index)%> course-title" role="presentation">
                 <a data-mercury="full" data-toggle="tab" id="<%= "course_title_id_is_#{course.id}" %>" href="#<%= "course_body_id_is_#{course.id}" %>" >
                   <%= raw course.title %>
               </a>
