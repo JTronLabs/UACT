@@ -1,43 +1,43 @@
 class EditablePagesController < ApplicationController
   before_action :set_editable_page, only: [:show, :edit, :update, :destroy]
 
-    
+
     def mercury_update_courses
         params[:content].each{|editable_field|
             css_id_label = editable_field[0]
             new_val = editable_field[1][:value]
-            
+
             id = css_id_label.delete("^0-9")
             course = EditablePage.where("id = ?",id).last
-            
+
             if css_id_label.index("title") != nil
                 course.title = new_val
             elsif css_id_label.index("body") != nil
                 course.body = new_val
             end
-            
+
             course.save!
         }
         render text: ""
     end
-    
+
     def mercury_update_index
         params[:content].each{|editable_field|
             css_id_label = editable_field[0]
             new_val = editable_field[1][:value]
-            
+
             entity = EditablePage.where("classification = ?",css_id_label).last
             entity.body = new_val
             entity.save!
         }
         render text: ""
     end
-    
+
     # GET /editable_pages/courses
     def courses
       @courses = EditablePage.where("classification = ?","courses")
     end
-    
+
   # GET /editable_pages
   # GET /editable_pages.json
   def index

@@ -1,6 +1,20 @@
 <div id="show-all-plays">
-    <% @plays.each do |current_play| %>
-        <%= render partial: "layouts/play_link" , 
+
+
+    <% curr_yr = @plays[0].date_of_play.year %>
+    <div id="<%= curr_yr %>"><!-- This div is required to initiate the first play grouping -->
+    <%  @plays.each do |current_play| %>
+        <% if(curr_yr != current_play.date_of_play.year)
+              curr_yr = current_play.date_of_play.year%>
+              <% puts "asdasd" %>
+              </div>
+              <div id="<%= curr_yr %>">
+        <% end %>
+
+        <%= render partial: "layouts/play_link" ,
             locals: {play: current_play} %>
     <% end %>
+  </div> <!-- This div is required to end the final year grouping of the plays -->
+
+
 </div>

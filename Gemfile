@@ -30,7 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
     gem 'cancancan', '~>1.10'
     #image upload processing (resizing etc)
     gem "rmagick" #requires ImageMagick -- $ sudo apt-get install libmagick++-dev
-    #image uploading    
+    #image uploading
     gem "carrierwave", github:'carrierwaveuploader/carrierwave'
     gem 'bootstrap-sass', '~> 3.3.5'
     gem 'autoprefixer-rails'
@@ -58,3 +58,6 @@ group :development, :test do
   gem 'spring'
 end
 
+group :production do
+  gem 'unicorn'
+end

@@ -1,4 +1,4 @@
-<% 
+<%
 #functions for making the first element the active class
 def add_active_class(index)
     if index==0
@@ -11,16 +11,17 @@ def add_active_class_with_fadein(index)
     end
 end
 %>
-    
+
 
 <% if can? :manage, @courses %>
 
     <!-- To get the Mercury editor interface on this page, navigate to ROOT/editor/courses -->
-    <%= link_to "Edit Courses", 
+    <%= link_to "Edit Courses",
         "/editor"+courses_editable_pages_path,
         class:"btn btn-default",
         id:"edit_link", #Used in mercury.js to find this tag
 data:{ save_url: mercury_update_courses_editable_pages_url } %>
+
     <%= link_to "Add Course",
         editable_pages_path(
             editable_page:{

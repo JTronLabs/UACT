@@ -13,21 +13,21 @@
           <%= f.label :last_name %><br>
           <%= f.text_field :last_name %>
       </div>
-      </div>
-      <div class="field">
-          <%= f.label :profile_image %><br>
-          <%= f.file_field :profile_image %>
-      </div>
 
+<!--Profile Image fields
+<div class="field">
+    <%= f.label :profile_image %><br>
+    <%= f.file_field :profile_image %>
+</div>
 
 <% if @user.profile_image.present? %>
     <%= link_to( image_tag(@user.profile_image.url(:thumb)) , @user.profile_image.url) %>
 <% else %>
-    <%= 
-    #link_to( image_tag("fallback/default_image.png", size:"200x200") ,  image_path("fallback/default_image.png") )  
+    <%=
+    #link_to( image_tag("fallback/default_image.png", size:"200x200") ,  image_path("fallback/default_image.png") )
     %>
 <% end %>
-
+-->
 
   <div class="field">
     <%= f.label :email %><br />
@@ -65,5 +65,3 @@
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 -->
-
-<%= link_to "Back", :back, class:"btn btn-default" %>

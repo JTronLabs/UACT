@@ -2,28 +2,31 @@ Rails.application.routes.draw do
   mount Mercury::Engine => '/'
   #:path changes name of URL
   #:as creates helper methods for linking
-    
-  #map controller actions to views    
-    resources :editable_pages, :path => '' do
-        collection do
-            put 'mercury_update_index'
-            put 'mercury_update_courses'
-            get 'courses'
-        end
-    end
-    
+  #path cannot be '''', as it will catch almost all requests, treating URLs are parameters
+
   root 'editable_pages#index'
-    
-    resources :plays do
-        collection do
-            get 'upcoming'
-            get 'archived'
-        end
-    end
+
+  #map controller actions to views
+  resources :editable_pages, :path => 'content' do
+      collection do
+          put 'mercury_update_index'
+          put 'mercury_update_courses'
+          get 'courses'
+      end
+  end
+
+  devise_for :users
+
+  resources :plays do
+      collection do
+          get 'upcoming'
+          get 'archived'
+      end
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".    
-    
-  devise_for :users, controllers: { registrations: 'users/registrations'  }
+  # See how all your routes lay out with "rake routes".
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
