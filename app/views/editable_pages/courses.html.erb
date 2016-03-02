@@ -41,8 +41,7 @@ data:{ save_url: mercury_update_courses_editable_pages_url } %>
 
 <% end %>
 
-
-<% if @courses != nil %>
+<% if @courses != nil and @courses.count > 0 %>
     <section id="class-tabs">
       <ul class="nav nav-tabs nav-justified" role="tablist">
           <% @courses.each_with_index do |course,index|%>
@@ -63,4 +62,6 @@ data:{ save_url: mercury_update_courses_editable_pages_url } %>
 
       </div>
     </section>
+<% else %>
+  <p>There doesn't seem to be anything here</p>
 <% end %>

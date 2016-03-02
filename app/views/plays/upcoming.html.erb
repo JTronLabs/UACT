@@ -1,6 +1,10 @@
 <div id="show-all-plays">
     <% @plays.each do |current_play| %>
-        <%= render partial: "layouts/play_link" , 
+        <%= render partial: "layouts/play_link" ,
             locals: {play: current_play} %>
+    <% end %>
+
+    <% if @plays.count == 0 %>
+      <p>There doesn't seem to be anything here</p>
     <% end %>
 </div>
