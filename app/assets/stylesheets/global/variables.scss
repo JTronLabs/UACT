@@ -1,10 +1,15 @@
 //********************* VARIABLES ****************************//
 $font-color:                black;
 $font-hover-color:          lightgray;
+$grey-color:       #828282;
+$grey-color-light: lighten($grey-color, 40%);
+$grey-color-dark:  darken($grey-color, 25%);
+
 $header-img-default-length: 100px;
 $footer-height:             75px;
 $spacing-unit:     30px;
 $card-len: 350px;
+$index-card-border-radius: 5px;
 
 $on-palm:          600px;
 $on-laptop:        800px;

@@ -10,48 +10,47 @@ h1{
 }
 
 #show-all-plays{
+  text-align: center;
+
+  .card {
+    box-shadow: 0px 0px 5px #888888;
+    margin: $spacing-unit / 2;
+    width: $card-len;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: top;
+    border-radius: $index-card-border-radius;
+    overflow: hidden;
     text-align: center;
-    .play-unit-outer-wrap{
-        box-shadow: 0px 0px 10px #888888;
-        vertical-align:top;
-        background-color: white;
-        padding:10px;
-        margin:10px;
-        text-align: center;
-        border-radius: 5px;
-        display: inline-block;
-        width:320px;
-        height:320px;
-        color:black;
 
-        .play-unit-inner-wrap{
-            background-color: #ffcc22;
-            border-radius: 5px;
-            width:100%;
-            height:100%;
-            padding:5px;
-            margin:0px;
-            position:relative;
-        }
+    .card-img-wrap{
+      display: block;
+      background-color: #ccaa55;
+      img{
+        height: $card-len/2;
+      }
+    }
+    .card-content{
+       background-color: white;
+       padding:$spacing-unit / 2;
+       color:black;
 
-        img{
-           padding:5px;
-        }
-        .information{
-            padding:3px;
-            margin:0px;
-            position:absolute;
-            bottom:0;
-            left:50%;
-            transform: translateX(-50%);
-        }
+       h1,h2,h3,h4,h5,h6{
+         font-weight: bold;
+         font-size: 1.7rem;
+       }
+       time{
+         font-size: 1.3rem;
+       }
     }
-    .play-unit-outer-wrap:hover{
-        color:white;
-        background-color: black;
-    }
+  }
+  .card:hover{
+    .card-content{
+       background-color: $grey-color-light;
+     }
+  }
+
 }
-
 
 #show-one-play{
     .play-display{
