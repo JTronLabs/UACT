@@ -1,0 +1,40 @@
+//********************* VARIABLES ****************************//
+$font-color:                black;
+$font-hover-color:          lightgray;
+$header-img-default-length: 100px;
+$footer-height:             75px;
+$spacing-unit:     30px;
+$card-len: 350px;
+
+$on-palm:          600px;
+$on-laptop:        800px;
+
+
+
+
+
+
+
+
+
+
+
+
+
+//********************* MIX_INS ****************************//
+
+@charset "utf-8";
+
+// Taken from 'Jekyll' Source:::::
+// Use media queries like this:
+// @include media-query($on-palm) {
+//     .wrapper {
+//         padding-right: $spacing-unit / 2;
+//         padding-left: $spacing-unit / 2;
+//     }
+// }
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}

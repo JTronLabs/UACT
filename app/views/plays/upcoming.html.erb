@@ -2,7 +2,7 @@
     <% if can? :manage, @plays %>
       <%= link_to "New Play", new_play_path, class:"btn btn-default" %>
     <% end %>
-    
+
     <% @plays.each do |current_play| %>
         <%= render partial: "layouts/play_link" ,
             locals: {play: current_play} %>
