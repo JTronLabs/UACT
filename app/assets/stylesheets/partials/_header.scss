@@ -22,11 +22,17 @@ header{
   }
 }
 
-@include media-query($on-palm) {
+@include media-query($on-laptop) {
   header{
     a:link, a:visited{
       font-size: 2rem;
-      img{ width: 0.8 * $header-img-default-length; }
+      img{
+        width: 0.7 * $header-img-default-length;
+      }
+    }
+    span{
+        vertical-align: middle;
+        width: 150px;
     }
   }
 }
