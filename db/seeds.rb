@@ -7,52 +7,53 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-User.delete_all
-person_img =  Rails.root.join("db/images/person.jpg").open
+if Rails.env == 'development' or Rails.env == 'test' or User.count == 0
+  User.delete_all
+  User.create!( #not included in users array
+      role:"admin",
+      email: 'gvarner@uaschools.org',
+      first_name:'Greg',
+      last_name:'Varner',
+      password: 'password',
+      password_confirmation: 'password')
+  User.create!( #not included in users array
+      role:"admin",
+      email: 'jtronlabs@gmail.com',
+      first_name:'James',
+      last_name:'Lowrey',
+      password: 'password',
+      password_confirmation: 'password')
+end
 
-User.create!( #not included in users array
-    role:"admin",
-    email: 'gvarner@uaschools.org',
-    first_name:'Greg',
-    last_name:'Varner',
-    password: 'password',
-    password_confirmation: 'password')
-User.create!( #not included in users array
-    role:"admin",
-    email: 'jtronlabs@gmail.com',
-    first_name:'James',
-    last_name:'Lowrey',
-    password: 'password',
-    password_confirmation: 'password')
-
-EditablePage.delete_all
-EditablePage.create!(
-    classification: "homepage_left",
-    body: "<h3>Director</h3>"
-    )
-EditablePage.create!(
-    classification: "homepage_mid",
-    body: "<h1>UACT</h1>"
-    )
-EditablePage.create!(
-    classification: "homepage_right",
-    body: "<p>Make links to ticket purchase and UACT donation here</p>"
-    )
-EditablePage.create!(
-    classification: "courses",
-    title: "Public Speaking",
-    body: "<p>This class is about fun stuff!</p>"
-    )
-EditablePage.create!(
-    classification: "courses",
-    title: "Class1",
-    body: "<p>This class is about more fun stuff!</p>"
-    )
+if Rails.env == 'development' or Rails.env == 'test' or EditablePage.count == 0
+  EditablePage.delete_all
+  EditablePage.create!(
+      classification: "homepage_left",
+      body: "<h3>Director</h3>"
+      )
+  EditablePage.create!(
+      classification: "homepage_mid",
+      body: "<h1>UACT</h1>"
+      )
+  EditablePage.create!(
+      classification: "homepage_right",
+      body: "<p>Make links to ticket purchase and UACT donation here</p>"
+      )
+  EditablePage.create!(
+      classification: "courses",
+      title: "Public Speaking",
+      body: "<p>This class is about fun stuff!</p>"
+      )
+  EditablePage.create!(
+      classification: "courses",
+      title: "Class1",
+      body: "<p>This class is about more fun stuff!</p>"
+      )
+end
 
 
-
-Play.delete_all
 if Rails.env == 'development' or Rails.env == 'test'
+  Play.delete_all
   plays=[]
   #seeding a profile picture
   play_one_profile_image = Rails.root.join("db/images/test1.jpeg").open
@@ -143,6 +144,8 @@ if Rails.env == 'development' or Rails.env == 'test'
           )
       )
 
+
+  #seeding the 'pictures' field
   p1 = Rails.root.join("db/images/play_photos/1.jpg").open
   p2 = Rails.root.join("db/images/play_photos/2.jpg").open
   p3 = Rails.root.join("db/images/play_photos/3.jpg").open
@@ -151,8 +154,6 @@ if Rails.env == 'development' or Rails.env == 'test'
   p6 = Rails.root.join("db/images/play_photos/6.jpg").open
   p7 = Rails.root.join("db/images/play_photos/7.jpg").open
   p8 = Rails.root.join("db/images/play_photos/8.jpg").open
-
-  #seeding the 'pictures' field
   plays.each do |play|
     play.pictures = [p1,p2,p3,p4,p5,p6,p7,p8]
     play.save!
