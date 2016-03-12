@@ -16,9 +16,79 @@
 //Use import statements instead of Sprockets directives (*=require_tree .), as they will break the build
 //ORDERING IS CRUCIAL
 @import "global/*";//First, import global variables, mix-in's, and such. MOST IMPORTANT that this precedes everything!
-
 @import "bootstrap";//Next include Twitter bootstrap
-
 @import "partials/*";//Next the partials
-
 @import "*";//Finally include the controller specific styling, miscellaneous gem stlying, and everything else that might be in the current directory
+
+//now, this is the styling that may be used on every page, so it goes in this 'application.css.scss' file
+
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+    //font-size:62.5%;  /* =10px (Easy to do REM math)*/
+}
+
+body {
+  background-image:image-url("concrete_seamless.png");
+  background-repeat: repeat;
+}
+
+#common-background-wrap{
+    padding-bottom: $footer-height;
+    position:relative;
+    display:block;
+    background-color: white;
+    box-shadow: 0px 0px 10px #888888;
+    width:70%;
+    margin:0 auto;
+    min-height: 100%;
+
+    .container-fluid{
+        margin:0;
+        padding:0;
+    }
+}
+
+@include media-query($on-laptop) {
+  #common-background-wrap{
+      width:98%;
+  }
+}
+
+#page-content{
+  padding:10px;
+}
+
+
+#login-alert-wrap{
+    position:relative;
+}
+
+.navbar{
+    text-align: center;
+    font-weight: bold;
+    .navbar-icon{
+        width:20px;
+        height:auto;
+    }
+}
+.btn{
+    margin:3px;
+}
+
+.editing-instructions{
+  font-size: 0.9rem;
+  color:blue;
+    &:hover {
+        background-color: transparent;
+        color:red;
+    }
+}
+
+#devise-wrap{
+    text-align: center;
+}

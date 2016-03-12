@@ -21,62 +21,30 @@
       </div>
       <div class="field">
         <%= f.label :date_of_play %><br>
-          <%= f.datetime_select :date_of_play %>
+        <%= f.datetime_select :date_of_play %>
       </div>
 
       <div class="field">
         <%= f.label :profile_image %><br>
           <%= f.file_field :profile_image %>
-          <!-- 
+          <!--
             <%= image_tag @play.profile_image.url(:thumb) if @play.profile_image.present? %>
             -->
       </div>
 
       <div class="field">
-        <%= f.label :pictures %><br>
+        <%= f.label :pictures %>
+        <a class="editing-instructions" title="To upload multiple pictures, hold Shift and use arrowkeys. Or hold Ctrl and click each picture you want. Then submit by clicking 'Open' or hitting the 'Enter' key.">Hover here to learn how</a>
+        <br>
         <%= f.file_field :pictures, multiple: true %>
       </div>
 
       <div class="field">
-        <%= f.label :link_to_video %><br>
+        <%= f.label :link_to_video %>
+        <a class="editing-instructions" title="Copy and paste your 'https://www.youtube.com/' video's URL here">Hover here to learn how</a>
+        <br>
         <%= f.text_field :link_to_video %>
       </div>
-
-
-        <div class="row user-association-fields">
-            <div class="col-md-6 field checkbox-list">
-                <%= f.label "Cast and Crew"%> <br />
-                <% if @users==nil or @users.length==0 %>
-                   <%= simple_format "No users in system graduated around the time of this play" %>
-                <% else %>
-                
-                <!-- Only auto fill previous users if they exist -->
-                    <% if @prev_users!=nil %>
-                        <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s, checked:@prev_users.keys) %>
-                    <% else %>
-                        <%= collection_check_boxes(:user_id, :user_ids, @users, :id, :simple_to_s) %>
-                    <% end %>
-
-                <% end %>
-            </div>
-
-            <div class="col-md-6 field user-roles-text-list">
-                <%= f.label "Roles and Responsibilities (eg Actor: Hamlet)"%> <br />
-                <% if @users !=nil %>
-                    <% @users.each do |user| %>
-                        <!-- Only auto fill previous users if they exist -->
-                        <% if @prev_users!=nil %>
-                            <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s,value:@prev_users[user.id] %>
-                        <% else %>
-                            <%= text_field_tag "user_role[#{user.id}]", nil, placeholder: user.simple_to_s %>
-                        <% end %>
-                    <% end %>
-                <% end %>
-            </div>
-            
-        </div>
-
-
 
 
 <!--

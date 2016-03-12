@@ -7,14 +7,14 @@ class PlaysController < ApplicationController
   # GET /plays
   # GET /plays.json
   def index
-      
+
   end
-    
+
   def upcoming
       @plays = Play.where("date_of_play >= ?",Time.now ).order(date_of_play: :desc )
   end
-    
-    
+
+
   def archived
       @plays = Play.where("date_of_play < ?",Time.now ).order(date_of_play: :desc )
   end
@@ -38,7 +38,7 @@ class PlaysController < ApplicationController
   def create
     @play = Play.new(play_params)
 
-   
+
     respond_to do |format|
       if @play.save
         format.html { redirect_to @play, notice: 'Play was successfully created.' }
@@ -48,12 +48,12 @@ class PlaysController < ApplicationController
         format.json { render json: @play.errors, status: :unprocessable_entity }
       end
     end
-      
+
   end
 
   # PATCH/PUT /plays/1
   # PATCH/PUT /plays/1.json
-  def update      
+  def update
     respond_to do |format|
       if @play.update(play_params)
         format.html { redirect_to @play, notice: 'Play was successfully updated.' }
@@ -83,7 +83,7 @@ class PlaysController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def play_params
-        params.require(:play).permit(:title, :description, :date_of_play,:profile_image,{:pictures=>[]},:link_to_video ) #weird notation aroudn :pictures needed to permitted nested (array) attributes in this column field. Otherwise will be blocked by the strong_parameters gem
+        params.require(:play).permit(:title, :description, :date_of_play,:profile_image,{:pictures=>[]},:link_to_video ) #weird notation around :pictures needed to permitted nested (array) attributes in this column field. Otherwise will be blocked by the strong_parameters gem
     end
-    
+
 end

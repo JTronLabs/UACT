@@ -58,11 +58,13 @@ if Rails.env == 'development' or Rails.env == 'test'
   play_one_profile_image = Rails.root.join("db/images/test1.jpeg").open
   play_two_profile_image = Rails.root.join("db/images/test_image.png").open
   play_three_profile_image = Rails.root.join("db/images/test2.png").open
+  test_vid = "https://www.youtube.com/embed/C0DPdy98e4c"
 
   plays.push(
       Play.create!(title: "As You Like It",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(3000,2,2),
+              link_to_video: test_vid,
               profile_image: play_one_profile_image
           )
       )
@@ -70,6 +72,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       Play.create!(title: "Romeo and Juliet",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2001,2,2),
+              link_to_video: test_vid,
               profile_image: play_one_profile_image
           )
       )
@@ -77,6 +80,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       Play.create!(title: "JB",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2003,2,2),
+              link_to_video: test_vid,
               profile_image: play_three_profile_image
           )
       )
@@ -84,6 +88,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       antigone = Play.create!(title: "Antigone",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2002,2,2),
+              link_to_video: test_vid,
               profile_image: play_two_profile_image
           )
       )
@@ -92,6 +97,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       Play.create!(title: "Romeo and Juliet",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2001,2,2),
+              link_to_video: test_vid,
               profile_image: play_one_profile_image
           )
       )
@@ -99,6 +105,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       Play.create!(title: "JB",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2003,2,2),
+              link_to_video: test_vid,
               profile_image: play_three_profile_image
           )
       )
@@ -106,6 +113,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       antigone = Play.create!(title: "Antigone",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2002,2,2),
+              link_to_video: test_vid,
               profile_image: play_two_profile_image
           )
       )
@@ -114,6 +122,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       Play.create!(title: "Romeo and Juliet",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2001,2,2),
+              link_to_video: test_vid,
               profile_image: play_one_profile_image
           )
       )
@@ -121,6 +130,7 @@ if Rails.env == 'development' or Rails.env == 'test'
       Play.create!(title: "JB",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2003,2,2),
+              link_to_video: test_vid,
               profile_image: play_three_profile_image
           )
       )
@@ -128,7 +138,17 @@ if Rails.env == 'development' or Rails.env == 'test'
       antigone = Play.create!(title: "Antigone",
               description: "a dope play fo sho",
               date_of_play: DateTime.new(2002,2,2),
+              link_to_video: test_vid,
               profile_image: play_two_profile_image
           )
       )
+
+=begin
+  #seeding the 'pictures field'
+  plays.each do |play|
+    play.pictures << play_one_profile_image
+    play.save!
+  end
+=end
+
 end
