@@ -19,8 +19,12 @@
           <li><%= nav_link 'Archives', archived_plays_url %> </li>
           <li><%= nav_link 'Courses', courses_editable_pages_url %> </li>
           <% if user_signed_in? %>
+              <% if can? :manage, Play %>
+                <li><%= nav_link "New Play", new_play_path %></li>
+              <% end %>
               <li><%= link_to "Edit Profile", edit_user_registration_path(current_user.id) %></li>
           <% end %>
+
           <!--<li><%= nav_link 'Resources', "" %> </li>-->
           <!--<li><%= nav_link 'Plays', plays_path %>  </li>-->
 

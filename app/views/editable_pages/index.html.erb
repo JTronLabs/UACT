@@ -7,6 +7,7 @@ data:{ save_url: mercury_update_index_editable_pages_url([@homepage_content_left
     %>
 <% end %>
 
+
 <div id="homepage">
 
     <% if @homepage_content_mid != nil and @homepage_content_left != nil and @homepage_content_right != nil %>
@@ -26,39 +27,3 @@ data:{ save_url: mercury_update_index_editable_pages_url([@homepage_content_left
       <p>There doesn't seem to be anything here</p>
     <% end %>
 </div>
-
-
-
-
-
-
-
-
-
-<!--
-<% if can? :manage, @editable_pages and @editable_pages !=nil %>
-    <h1>Listing Editable Pages</h1>
-
-    <table>
-      <thead>
-        <tr>
-          <th colspan="3"></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <% @editable_pages.each do |editable_page| %>
-          <tr>
-            <td><%= link_to 'Show', editable_page %></td>
-            <td><%= link_to 'Edit', edit_editable_page_path(editable_page) %></td>
-            <td><%= link_to 'Destroy', editable_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-
-    <br>
-
-    <%= link_to 'New Editable page', new_editable_page_path %>
-<% end %>
--->

@@ -45,11 +45,6 @@ class EditablePagesController < ApplicationController
       @homepage_content_right = EditablePage.where("classification = ?","homepage_right").last
   end
 
-  # GET /editable_pages/new
-  def new
-    @editable_page = EditablePage.new
-  end
-
   # GET /editable_pages/1/edit
   def edit
   end
