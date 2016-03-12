@@ -11,8 +11,7 @@ class Play < ActiveRecord::Base
     validates :title, presence: true
     validates :description, presence: true
     validates :date_of_play, presence: true
-    #validates :profile_image, presence: true #not working, causes nil class errors...
-
+    validates :profile_image, presence: true
 
     before_save :format_data
 

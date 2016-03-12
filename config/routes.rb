@@ -22,8 +22,11 @@ Rails.application.routes.draw do
           get 'upcoming'
           get 'archived'
       end
+      member do
+        get :download_all_pics
+      end
   end
-  
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

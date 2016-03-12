@@ -4,19 +4,23 @@ class PlaysController < ApplicationController
     skip_authorize_resource only: [:upcoming,:archived]
     #before_action :authenticate_user!, only: [:edit, :update, :destroy, :create] #only allow users to edit the DB, anyone can read. Note these routes are only called when someone clicks 'create' (or edit or delete), this doesn't stop the forms from being served
 
-  # GET /plays
-  # GET /plays.json
-  def index
-
-  end
-
+  ##############CUSTOM routes##############
   def upcoming
       @plays = Play.where("date_of_play >= ?",Time.now ).order(date_of_play: :desc )
   end
 
-
   def archived
       @plays = Play.where("date_of_play < ?",Time.now ).order(date_of_play: :desc )
+  end
+
+  def download_all_pics
+
+  end
+
+  ##############DEFAULT routes##############
+  # GET /plays
+  # GET /plays.json
+  def index
   end
 
   # GET /plays/1
