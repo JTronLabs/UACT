@@ -143,12 +143,19 @@ if Rails.env == 'development' or Rails.env == 'test'
           )
       )
 
-=begin
-  #seeding the 'pictures field'
+  p1 = Rails.root.join("db/images/play_photos/1.jpg").open
+  p2 = Rails.root.join("db/images/play_photos/2.jpg").open
+  p3 = Rails.root.join("db/images/play_photos/3.jpg").open
+  p4 = Rails.root.join("db/images/play_photos/4.jpg").open
+  p5 = Rails.root.join("db/images/play_photos/5.jpg").open
+  p6 = Rails.root.join("db/images/play_photos/6.jpg").open
+  p7 = Rails.root.join("db/images/play_photos/7.jpg").open
+  p8 = Rails.root.join("db/images/play_photos/8.jpg").open
+
+  #seeding the 'pictures' field
   plays.each do |play|
-    play.pictures << play_one_profile_image
+    play.pictures = [p1,p2,p3,p4,p5,p6,p7,p8]
     play.save!
   end
-=end
 
 end
