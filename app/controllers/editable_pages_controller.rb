@@ -61,7 +61,7 @@ class EditablePagesController < ApplicationController
 
     respond_to do |format|
       if @editable_page.save
-        format.html { redirect_to :back, notice: 'Editable page was successfully created.' }
+        format.html { redirect_to :back, notice: 'Successfully created.' }
         format.json { render :show, status: :created, location: @editable_page }
       else
         format.html { render :new }
@@ -75,7 +75,7 @@ class EditablePagesController < ApplicationController
   def update
     respond_to do |format|
       if @editable_page.update(editable_page_params)
-        format.html { redirect_to :back, notice: 'Editable page was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Successfully updated.' }
         format.json { render :show, status: :ok, location: @editable_page }
       else
         format.html { render :edit }
@@ -89,7 +89,7 @@ class EditablePagesController < ApplicationController
   def destroy
     @editable_page.destroy
     respond_to do |format|
-      format.html { redirect_to :back, notice: 'Editable page was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Successfully destroyed.' }
       format.json { head :no_content }
     end
   end
