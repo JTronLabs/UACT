@@ -18,10 +18,6 @@ class PlaysController < ApplicationController
   end
 
   ##############DEFAULT routes##############
-  # GET /plays
-  # GET /plays.json
-  def index
-  end
 
   # GET /plays/1
   # GET /plays/1.json
@@ -41,7 +37,6 @@ class PlaysController < ApplicationController
   # POST /plays.json
   def create
     @play = Play.new(play_params)
-
 
     respond_to do |format|
       if @play.save

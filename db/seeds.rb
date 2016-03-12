@@ -51,7 +51,6 @@ if Rails.env == 'development' or Rails.env == 'test' or EditablePage.count == 0
       )
 end
 
-
 if Rails.env == 'development' or Rails.env == 'test'
   Play.delete_all
   plays=[]

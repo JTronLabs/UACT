@@ -1,7 +1,6 @@
 class EditablePagesController < ApplicationController
   before_action :set_editable_page, only: [:show, :edit, :update, :destroy]
 
-
     def mercury_update_courses
         params[:content].each{|editable_field|
             css_id_label = editable_field[0]
@@ -46,11 +45,6 @@ class EditablePagesController < ApplicationController
       @homepage_content_right = EditablePage.where("classification = ?","homepage_right").last
   end
 
-  # GET /editable_pages/1
-  # GET /editable_pages/1.json
-  def show
-  end
-
   # GET /editable_pages/new
   def new
     @editable_page = EditablePage.new
@@ -67,7 +61,7 @@ class EditablePagesController < ApplicationController
 
     respond_to do |format|
       if @editable_page.save
-        format.html { redirect_to @editable_page, notice: 'Editable page was successfully created.' }
+        format.html { redirect_to :back, notice: 'Editable page was successfully created.' }
         format.json { render :show, status: :created, location: @editable_page }
       else
         format.html { render :new }
@@ -81,7 +75,7 @@ class EditablePagesController < ApplicationController
   def update
     respond_to do |format|
       if @editable_page.update(editable_page_params)
-        format.html { redirect_to @editable_page, notice: 'Editable page was successfully updated.' }
+        format.html { redirect_to :back, notice: 'Editable page was successfully updated.' }
         format.json { render :show, status: :ok, location: @editable_page }
       else
         format.html { render :edit }
@@ -95,7 +89,7 @@ class EditablePagesController < ApplicationController
   def destroy
     @editable_page.destroy
     respond_to do |format|
-      format.html { redirect_to editable_pages_url, notice: 'Editable page was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Editable page was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

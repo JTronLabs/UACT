@@ -6,8 +6,8 @@ Rails.application.routes.draw do
 
   root 'editable_pages#index'
 
-  #map controller actions to views
-  resources :editable_pages, :path => 'content' do
+  #map controller actions to views :: http://guides.rubyonrails.org/routing.html#crud-verbs-and-actions
+  resources :editable_pages, :path => 'content', :except => [:show] do
       collection do
           put 'mercury_update_index'
           put 'mercury_update_courses'
@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :plays do
+  resources :plays, :except => [:index] do
       collection do
           get 'upcoming'
           get 'archived'
